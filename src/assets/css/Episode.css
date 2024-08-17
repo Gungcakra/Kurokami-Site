@@ -1,0 +1,80 @@
+.episode-container{
+    background-color: #0b0c0e;
+    min-height: 1000px;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+.episode-detail{
+    transition: all 0.5s;
+
+}
+.episode-player{
+    width: 100%;
+}
+.episode-frame{
+    width: 100%;
+    height: 220px;
+}
+.episode-thumbnail{
+    width: 100%;   /* Sesuaikan ukuran lingkaran */
+    height: auto;  /* Pastikan lebar dan tinggi sama */
+    object-fit: cover;
+    transform: scale(1.3);
+
+}
+.episode-list-container{
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-color: transparent transparent;
+}
+.episode-list-container::-webkit-scrollbar{
+    display: none;
+}
+.episode-list{
+    display: flex;
+    width: max-content;
+    gap: 10px;
+}
+.episode-card{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #222831;
+}
+/* src/assets/css/Episode.css */
+.episode-card.current-episode {
+    background-color: #A41E34; /* Adjust the background color as needed */
+   /* Optional: Highlight border */
+    color: #F6F6F6;
+  }
+
+  /* src/assets/css/Episode.css */
+.episode-video {
+    max-width: 100%;
+    height: auto;
+  }
+
+.episode-details{
+    margin-left: 10px;
+}
+.episode-info{
+    gap: 10px;
+}
+.episode-info-text{
+    background-color: #222831;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 11px;
+    transform: scale(1.1);
+}
+
+.server-option{
+    color: white;
+  }
+  .server-list{
+    margin-top: 100px;
+  }
+  .server{
+    transform: scale(0.8);
+  }

@@ -1,0 +1,9 @@
+{
+  "appId": "com.kuro.kami",
+  "appName": "Kurokami",
+  "webDir": "dist",
+  "android": {
+    "package": "com.kuro.kami"
+  }
+}
+

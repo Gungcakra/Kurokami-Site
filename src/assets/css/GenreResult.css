@@ -1,0 +1,84 @@
+/* Update CSS for GenreResults Component */
+#bg-genre-result {
+  background-color: #0b0c0e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+#container-genre-result {
+  background-color: #0b0c0e;
+  flex-wrap: wrap;
+}
+
+#card {
+  background-color: #222831;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 150px; /* Adjust height to ensure consistency */
+  object-fit: cover;
+}
+
+.navigation-back {
+  background-color: #222831;
+  width: 100%;
+  position: fixed;
+  top: 0; /* Ensure fixed position at top */
+  padding-top: 10px;
+  z-index: 1000; /* Ensure it’s above other elements */
+}
+
+.btn-back {
+  color: #A41E34;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-back:hover {
+  color: #A41E34;
+}
+.genre-res-title{
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.pagination-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.btn-pagination {
+  background-color: #444;
+  color: white;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-pagination.active {
+  background-color: #A41E34; /* Active page color */
+}
+
+.btn-pagination:hover {
+  background-color: #555;
+  color: #fff;
+}

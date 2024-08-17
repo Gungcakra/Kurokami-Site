@@ -1,0 +1,8 @@
+*{
+    -webkit-user-select: none; /* Untuk Safari */
+    -moz-user-select: none; /* Untuk Firefox */
+    -ms-user-select: none;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+
+  }

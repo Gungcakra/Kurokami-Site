@@ -1,0 +1,189 @@
+.detail-container {
+    max-width: 100vw;
+    overflow-x: hidden;
+    padding-top: 400px;
+  }
+  
+  .parallax-container {
+    position: fixed;
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+    overflow: hidden;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  transition: transform 0.2s ease-out; /* Smooth transition */
+  }
+  
+  .parallax-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  transition: transform 0.2s ease-out; /* Smooth transition */
+  }
+  
+  .parallax-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    z-index: 1;
+  }
+  
+
+.parallax-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+
+.detail-body{
+    background-color: #111215;  
+    
+}
+/* Adjust the styling for the genre tag elements */
+.genre-col {
+  flex: 1;
+  min-width: 80px;
+  border-radius: 20px;
+  background-color: #222831;
+  border: 1px solid #A41E34;
+  margin: 5px;
+}
+
+/* Hide scrollbar */
+.episode-list-card {
+  max-height: 600px; /* Set the height as needed */
+  overflow-y: auto;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* WebKit Browsers: Hide scrollbar */
+.episode-list-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Styling for the sorting button */
+.sort-button {
+  margin-bottom: 15px; /* Add margin to separate the button from the list */
+  border: 1px solid transparent;
+  background-color: #222831;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Ensure each episode card fits within the layout */
+.episode-col {
+  flex: 1;
+  min-width: 200px; /* Adjust for responsiveness */
+  margin-bottom: 10px;
+}
+
+/* Style for the episode card body */
+.episode-card-body {
+  text-decoration: none;
+  color: white;
+  background-color: #171b20;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Add this to ensure all elements consider padding and borders in their sizes */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.details-text{
+  background-color: #222831;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.rating{
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.related-anime-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  gap: 10px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: transparent transparent; /* For Firefox */
+}
+
+.related-anime-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.related-anime-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.related-anime-list::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.related-anime-item {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  background-color: #222831; /* Dark background for better contrast */
+}
+
+.related-anime-image {
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.related-anime-title-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Dark background for better text visibility */
+  padding: 0 5px; /* Added padding for text */
+}
+
+.related-anime-title {
+  font-size: 0.9rem; /* Adjusted font size */
+  font-weight: bold;
+  color: white; /* Highlighted color for title */
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap; /* Prevents text from wrapping */
+  text-overflow: ellipsis; /* Adds ellipsis when text overflows */
+  width: 100%;
+}
+
+.container-synopsis{
+  background-color: #171b20;
+  border-radius: 15px;
+  padding: 10px;
+
+}

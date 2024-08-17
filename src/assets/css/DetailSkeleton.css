@@ -1,0 +1,51 @@
+.skeleton-container {
+    background-color: #272b30;
+    padding: 20px;
+}
+
+.skeleton-parallax {
+    height: 400px;
+    background-color: #333;
+    margin-bottom: 20px;
+}
+
+.skeleton-body {
+    padding: 10px;
+}
+
+.skeleton-item {
+    background: #444;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.skeleton-title {
+    height: 30px;
+    width: 60%;
+}
+
+.skeleton-rating {
+    height: 20px;
+    width: 40%;
+}
+
+.skeleton-synopsis {
+    height: 60px;
+    width: 100%;
+}
+
+.skeleton-genres {
+    height: 50px;
+    width: 100%;
+}
+
+.skeleton-details {
+    height: 50px;
+    width: 100%;
+}
+
+.skeleton-episodes {
+    height: 200px;
+    width: 100%;
+}
+

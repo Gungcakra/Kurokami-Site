@@ -1,0 +1,38 @@
+.history-container{
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: #0b0c0e;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-episode-list{
+    background-color: #1b1b1d;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    width: 350px;
+    max-width: 100%;
+    margin-bottom: 10px;
+    
+}
+
+.episode-image{
+    max-width: 100px;
+    max-height: auto;
+    border-radius: 10px;
+}
+.episode-title{
+    color: #EEEEEE;
+
+}
+.episode-number{
+    color: #EEEEEE;
+}
+.history-detail{
+    background-color: #232426
+    ;
+    padding: 10px;
+    max-width: 100%;
+    border-radius: 16px;
+}
