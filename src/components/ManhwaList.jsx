@@ -324,6 +324,7 @@ const ManhwaList = () => {
         </div>
       </div>
 
+      <GoogleAds/>
 
 
       {/* ONGOING MANHWA */}
