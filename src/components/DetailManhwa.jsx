@@ -235,12 +235,7 @@ const DetailManhwa = () => {
 
 
   return (
-    <motion.div
-    initial={{ scale:0.5, opacity:0 }}
-    animate={{ scale:1, opacity:1 }} 
-    exit={{ scale:0.5, opacity:0 }}
-    transition={{ duration:0.3 }}
-  >
+ 
   
     <div className="detail-container">
       <ToastContainer />
@@ -370,7 +365,7 @@ const isRead = Boolean(readChapter);
 
       </div>
     </div>
-    </motion.div>
+  
   );
 };
 

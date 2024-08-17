@@ -93,12 +93,14 @@
 
     const handleNavClick = () => {
       window.scrollTo(0, 0);
+      setLoading(true)
     };
     const handleSelect = (chapterLink) => {
       const chapterId = chapterLink.split('/')[3];
       setSelectedChapter(chapterId);
       // Redirect to the selected chapter
       navigate(`/chapter/${chapterId}`);
+      setLoading(true)
     };
 
     if (loading) {
