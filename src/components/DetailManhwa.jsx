@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import "../assets/css/AnimeDetail.css"; // Ensure this path is correct
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faList, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faList, faBookmark, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import DetailSkeleton from "./DetailSkeleton";
 import { App } from "@capacitor/app";
 import { Spinner } from "react-bootstrap";
@@ -28,7 +28,6 @@ const DetailManhwa = () => {
   const [readChapters, setReadChapters] = useState(
     JSON.parse(localStorage.getItem('readChapters')) || []
   );
-  
   // Scale state
   const [scale, setScale] = useState(1);
 
@@ -238,6 +237,15 @@ const DetailManhwa = () => {
  
   
     <div className="detail-container">
+    <div className="navigation-back">
+        <button
+          onClick={() => navigate(-1)}
+          className="btn btn-back btn-link"
+          style={{ top: '10px', left: '10px' }}
+        >
+          <FontAwesomeIcon icon={faArrowLeft} /> Back
+        </button>
+      </div>
       <ToastContainer />
       <div className="parallax-container">
         <img
