@@ -1,3 +1,4 @@
+/* Update CSS for searchResults Component */
 #bg-search-result {
   background-color: #0b0c0e;
   min-height: 100vh;
@@ -33,15 +34,17 @@
   padding-top: 10px;
   z-index: 1000; /* Ensure it’s above other elements */
 }
-.btn-back{
+
+.btn-back {
   color: #A41E34;
   text-decoration: none;
   font-weight: bold;
 }
-.btn-back:hover{
+
+.btn-back:hover {
   color: #A41E34;
 }
-.search-title{
+.search-res-title{
   font-size: 0.9rem;
   font-weight: bold;
   text-align: center;
@@ -49,4 +52,33 @@
   overflow: hidden;
   margin-top: 10px;
   width: 100%;
+}
+
+.pagination-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+.btn-pagination {
+  background-color: #444;
+  color: white;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-pagination.active {
+  background-color: #A41E34; /* Active page color */
+}
+
+.btn-pagination:hover {
+  background-color: #555;
+  color: #fff;
 }

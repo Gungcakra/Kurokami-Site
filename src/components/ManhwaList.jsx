@@ -250,7 +250,7 @@ const ManhwaList = () => {
 </div>
 
 )}
-<GoogleAds/>
+{/* <GoogleAds/> */}
 
 <p className="text-start text-white mt-4 fs-3"><b>Genre</b> List ({genreList.genres?.length})</p>
 {loading ? (
@@ -324,7 +324,7 @@ const ManhwaList = () => {
         </div>
       </div>
 
-      <GoogleAds/>
+      {/* <GoogleAds/> */}
 
 
       {/* ONGOING MANHWA */}
