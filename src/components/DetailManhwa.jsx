@@ -12,6 +12,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setManhwaId } from "../store";
 import { motion } from "framer-motion";
+import AdsterraAds from "./AdsterraAds";
 
 const removeWordFromTitle = (title) => {
   return title.replace(/nonton anime/gi, "").trim();
@@ -242,6 +243,8 @@ const DetailManhwa = () => {
  
   
     <div className="detail-container">
+
+
     <div className="navigation-back" style={{ 
       opacity: opacity,  // Set opacity dynamically
             transition: 'opacity 0.3s ease'
@@ -268,6 +271,7 @@ const DetailManhwa = () => {
         <div className="parallax-overlay"></div>
       </div>
       <div className="detail-body p-2">
+
         <p className="mb-2 text-white fs-2">
           {removeWordFromTitle(manhwaDetails.title)}
         </p>

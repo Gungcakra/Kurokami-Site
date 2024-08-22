@@ -3,6 +3,15 @@
     background-color: #0b0c0e;
     min-height: 100vh;
 }
+/* src/components/AdsterraAds.css */
+
+.adsterra-ads {
+  /* Example placement and size */
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+}
+
 #container-manhwalist{
     background-color: #0b0c0e;
 ;

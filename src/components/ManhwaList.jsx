@@ -4,7 +4,7 @@ import "../assets/css/ManhwaList.css";
 import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faStar,faSearch,faFire } from '@fortawesome/free-solid-svg-icons';
-import GoogleAds from './GoogleAds';
+import AdsterraAds from './AdsterraAds';
 const ManhwaList = () => {
   const [popularManhwa, setPopularManhwa] = useState([]);
   const [newManhwa, setNewManhwa] = useState([]);
@@ -175,6 +175,9 @@ const ManhwaList = () => {
   ))}
 </div>
 
+{/* <AdsterraAds/> */}
+
+
 <div className={`search-bar ${isFixed ? 'fixed' : ''}`}>
      <form onSubmit={handleSearch}>
 
@@ -250,7 +253,6 @@ const ManhwaList = () => {
 </div>
 
 )}
-{/* <GoogleAds/> */}
 
 <p className="text-start text-white mt-4 fs-3"><b>Genre</b> List ({genreList.genres?.length})</p>
 {loading ? (
@@ -323,8 +325,6 @@ const ManhwaList = () => {
         )}
         </div>
       </div>
-
-      {/* <GoogleAds/> */}
 
 
       {/* ONGOING MANHWA */}
