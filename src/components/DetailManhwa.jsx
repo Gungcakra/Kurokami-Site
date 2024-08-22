@@ -30,6 +30,7 @@ const DetailManhwa = () => {
   );
   // Scale state
   const [scale, setScale] = useState(1);
+  const [opacity, setOpacity] = useState(1)
 
   useEffect(() => {
     const fetchManhwaDetail = async () => {
@@ -56,8 +57,12 @@ const DetailManhwa = () => {
   // Handle scroll effect
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    const scaleFactor = Math.max(1.1, 1 + scrollPosition / 600); // Adjust scaling factor
+    const scaleFactor = Math.max(1.1, 1 + scrollPosition / 600);
     setScale(scaleFactor);
+    
+    // Set opacity based on scroll position
+    const newOpacity = Math.max(0, 1 - scrollPosition / 200);  // Adjust this value as needed
+    setOpacity(newOpacity);
   };
 
   // BACK Button
@@ -166,23 +171,23 @@ const DetailManhwa = () => {
   const totalChapter = manhwaDetails.chapters.length;
 
 
-  const addReadChapter = (chapterTitle, manhwaTitle) => {
-    dispatch(setManhwaId(idManhwa));
-    const currentTime = new Date().toISOString(); // Save current time in ISO format
-    const updatedReadChapters = readChapters.map(chapter => 
-      chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle
-        ? { ...chapter, time: currentTime }
-        : chapter
-    );
+  // const addReadChapter = (chapterTitle, manhwaTitle) => {
+  //   dispatch(setManhwaId(idManhwa));
+  //   const currentTime = new Date().toISOString(); // Save current time in ISO format
+  //   const updatedReadChapters = readChapters.map(chapter => 
+  //     chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle
+  //       ? { ...chapter, time: currentTime }
+  //       : chapter
+  //   );
     
-    // Check if chapterTitle with manhwaTitle was not found and add it
-    if (!updatedReadChapters.some(chapter => chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)) {
-      updatedReadChapters.push({ chapterTitle, manhwaTitle, time: currentTime });
-    }
+  //   // Check if chapterTitle with manhwaTitle was not found and add it
+  //   if (!updatedReadChapters.some(chapter => chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)) {
+  //     updatedReadChapters.push({ chapterTitle, manhwaTitle, time: currentTime });
+  //   }
     
-    localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
-    setReadChapters(updatedReadChapters); // Update state
-  };
+  //   localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
+  //   setReadChapters(updatedReadChapters); // Update state
+  // };
   
   
   const timeAgo = (timestamp) => {
@@ -213,23 +218,23 @@ const DetailManhwa = () => {
   
   
 
-  const removeReadChapter = (chapterTitle, manhwaTitle) => {
-    const updatedReadChapters = readChapters.filter(chapter => 
-      !(chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)
-    );
+  // const removeReadChapter = (chapterTitle, manhwaTitle) => {
+  //   const updatedReadChapters = readChapters.filter(chapter => 
+  //     !(chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)
+  //   );
     
-    localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
-    setReadChapters(updatedReadChapters); // Update state
-  };
+  //   localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
+  //   setReadChapters(updatedReadChapters); // Update state
+  // };
   
   // Function to check if a chapter has been read
-  const isChapterRead = (chapterTitle) => {
-    const readChapters = JSON.parse(localStorage.getItem('readChapters')) || [];
-    const manhwaTitle = manhwaDetails.title;
+  // const isChapterRead = (chapterTitle) => {
+  //   const readChapters = JSON.parse(localStorage.getItem('readChapters')) || [];
+  //   const manhwaTitle = manhwaDetails.title;
   
-    const manhwa = readChapters.find(item => item.manhwaTitle === manhwaTitle);
-    return manhwa && manhwa.chapters.includes(chapterTitle);
-  };
+  //   const manhwa = readChapters.find(item => item.manhwaTitle === manhwaTitle);
+  //   return manhwa && manhwa.chapters.includes(chapterTitle);
+  // };
   
 
 
@@ -237,11 +242,17 @@ const DetailManhwa = () => {
  
   
     <div className="detail-container">
-    <div className="navigation-back">
+    <div className="navigation-back" style={{ 
+      opacity: opacity,  // Set opacity dynamically
+            transition: 'opacity 0.3s ease'
+     }}>
         <button
           onClick={() => navigate(-1)}
           className="btn btn-back btn-link"
-          style={{ top: '10px', left: '10px' }}
+          style={{ 
+            top: '10px', 
+            left: '10px',
+          }}
         >
           <FontAwesomeIcon icon={faArrowLeft} /> Back
         </button>
@@ -334,10 +345,6 @@ const isRead = Boolean(readChapter);
   <Link
     to={`/chapter/${updatedUrl}`}
     className="episode-link text-decoration-none"
-    onClick={() => {
-      // Add chapter to read list on click
-      addReadChapter(chapter.chapterTitle, manhwaDetails.title); // Pass manhwa title
-    }}
   >
     <div className="d-flex episode-card-body">
       <div className="col-7 d-flex flex-column">
@@ -345,7 +352,7 @@ const isRead = Boolean(readChapter);
         <p>{chapter.chapterDate}</p>
       </div>
       <div className="col d-flex align-items-center">
-      {isRead && (
+      {/* {isRead && (
           <p>
             {timeAgo(
               readChapters.find(
@@ -353,7 +360,7 @@ const isRead = Boolean(readChapter);
               )?.time
             )}
           </p>
-        )}
+        )} */}
       </div>
     </div>
   </Link>
