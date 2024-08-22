@@ -6,6 +6,7 @@ import { App } from '@capacitor/app';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Spinner } from 'react-bootstrap';
+import AdsterraAds from './AdsterraAds';
 
 const truncateTitle = (title, maxWords) => {
   const words = title.split(' ');
@@ -107,9 +108,10 @@ const SearchResults = () => {
         </button>
       </div>
 
-      <p className="text-start text-white fs-3 mt-5 pt-4">
-        <b>search</b> Results for "{query}"
+      <p className="text-start text-white fs-3 mt-5 pt-4 m-2">
+        <b>Search</b> Results for "{query}"
       </p>
+      <AdsterraAds />
 
       <div id="container-search-result" className="d-flex justify-content-center">
         {loadingsearch ? (

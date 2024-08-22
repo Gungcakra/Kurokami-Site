@@ -6,6 +6,7 @@ import { App } from '@capacitor/app';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Spinner } from 'react-bootstrap';
+import AdsterraAds from './AdsterraAds';
 
 const truncateTitle = (title, maxWords) => {
   const words = title.split(' ');
@@ -107,9 +108,10 @@ const GenreResults = () => {
         </button>
       </div>
 
-      <p className="text-start text-white fs-3 mt-5 pt-4">
+      <p className="text-start text-white fs-3 mt-5 pt-4 m-2">
         <b>Genre</b> Results for "{genreId}"
       </p>
+      <AdsterraAds />
 
       <div id="container-genre-result" className="d-flex justify-content-center">
         {loadingGenre ? (

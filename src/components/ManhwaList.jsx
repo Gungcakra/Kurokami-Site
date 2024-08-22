@@ -175,7 +175,7 @@ const ManhwaList = () => {
   ))}
 </div>
 
-{/* <AdsterraAds/> */}
+<AdsterraAds/>
 
 
 <div className={`search-bar ${isFixed ? 'fixed' : ''}`}>
@@ -371,7 +371,6 @@ const ManhwaList = () => {
     ))}
   </div>
 </div>
-
 )}
 
 </div>

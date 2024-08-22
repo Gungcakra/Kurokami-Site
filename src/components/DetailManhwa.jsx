@@ -309,6 +309,7 @@ const DetailManhwa = () => {
             {limitSynopsis(manhwaDetails.synopsis)}
           </p>
         </div>
+        <AdsterraAds/>
 
         <p className="card-title fs-5 mt-4 text-white">Chapters ({totalChapter})</p>
         <div className="container d-flex gap-2">

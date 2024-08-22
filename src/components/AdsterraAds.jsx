@@ -1,48 +1,52 @@
-// src/components/AdsterraAds.js
-
 import React, { useEffect } from 'react';
 
 const AdsterraAds = () => {
   useEffect(() => {
-    // Check if the ad script is already added
-    if (!document.getElementById('adsterra-script')) {
-      // Create and add the ad configuration script
-      const adConfig = document.createElement('script');
-      adConfig.type = 'text/javascript';
-      adConfig.id = 'adsterra-config';
-      adConfig.innerHTML = `
-        atOptions = {
-          'key' : 'a925dcb7da316bd1552d759a1a50bbde',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-      `;
-      document.body.appendChild(adConfig);
+    // Create the script element for ad options
+    const scriptOptions = document.createElement('script');
+    scriptOptions.type = 'text/javascript';
+    scriptOptions.innerHTML = `
+      atOptions = {
+        'key': 'a925dcb7da316bd1552d759a1a50bbde',
+        'format': 'iframe',
+        'height': 250,
+        'width': 300,
+        'params': {}
+      };
+    `;
 
-      // Create and add the ad script
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.id = 'adsterra-script';
-      script.src = '//www.topcreativeformat.com/a925dcb7da316bd1552d759a1a50bbde/invoke.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
+    // Create the script element for ad invocation
+    const scriptInvoke = document.createElement('script');
+    scriptInvoke.type = 'text/javascript';
+    scriptInvoke.src = "//www.topcreativeformat.com/a925dcb7da316bd1552d759a1a50bbde/invoke.js";
+    scriptInvoke.async = true;
 
-    // Cleanup on component unmount
+    // Append scripts to the ad container
+    const adContainer = document.getElementById('adsterra-ad');
+    adContainer.appendChild(scriptOptions);
+    adContainer.appendChild(scriptInvoke);
+
+    // Cleanup when the component is unmounted
     return () => {
-      const adConfig = document.getElementById('adsterra-config');
-      const adScript = document.getElementById('adsterra-script');
-      if (adConfig) document.body.removeChild(adConfig);
-      if (adScript) document.body.removeChild(adScript);
+      if (adContainer.contains(scriptOptions)) {
+        adContainer.removeChild(scriptOptions);
+      }
+      if (adContainer.contains(scriptInvoke)) {
+        adContainer.removeChild(scriptInvoke);
+      }
     };
   }, []);
 
   return (
-    <div className="adsterra-ads">
-      
-    </div>
+    <div
+      id="adsterra-ad"
+      style={{
+        display: 'block',
+        width: '300px',
+        height: '250px',
+        margin: '0 auto',
+      }}
+    />
   );
 };
 
