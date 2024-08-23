@@ -56,27 +56,40 @@ const ReadChapter = () => {
     fetchManhwaDetail();
   }, [manhwaId]);
 
+
   useEffect(() => {
     if (chapterData && manhwaMoreDetail && manhwaMoreDetail.title) {
-      addReadChapter(chapterData.title, manhwaMoreDetail.title);
+      saveChapterToLocalStorage(chapterData.title, chapterData.chapterUrl, manhwaMoreDetail.title);
     }
   }, [chapterData, manhwaMoreDetail]);
-
-  const addReadChapter = (chapterTitle, manhwaTitle) => {
+  
+  const saveChapterToLocalStorage = (chapterTitle, chapterUrl, manhwaTitle) => {
     const currentTime = new Date().toISOString();
-    const readChapters = JSON.parse(localStorage.getItem('readChapters')) || [];
-    const updatedReadChapters = readChapters.map(chapter =>
+    const savedChapters = JSON.parse(localStorage.getItem('savedChapters')) || [];
+    
+    // Check if the chapter with the same title and manhwa already exists
+    const existingChapterIndex = savedChapters.findIndex(chapter => 
       chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle
-        ? { ...chapter, time: currentTime }
-        : chapter
     );
-
-    if (!updatedReadChapters.find(chapter => chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)) {
-      updatedReadChapters.push({ chapterTitle, manhwaTitle, time: currentTime });
+  
+    if (existingChapterIndex !== -1) {
+      // Update existing chapter's time
+      savedChapters[existingChapterIndex].time = currentTime;
+    } else {
+      // Add new chapter with title, url, manhwa title, and time
+      const newChapter = {
+        chapterTitle,
+        chapterUrl,
+        manhwaTitle,
+        time: currentTime
+      };
+      savedChapters.push(newChapter);
     }
-
-    localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
+    
+    localStorage.setItem('savedChapters', JSON.stringify(savedChapters));
   };
+  
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);

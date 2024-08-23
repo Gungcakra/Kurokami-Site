@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/css/History.css';
+import '../assets/css/BookMarks.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -44,13 +44,13 @@ const Bookmarks = () => {
     return words.length > wordLimit ? `${words.slice(0, wordLimit).join(" ")}...` : cleanedText;
   };
   return (
-    <div className="history-container">
+    <div className="bookmark-container">
       <p className='text-start text-white fs-2 fw-bold m-2'>Bookmarks</p>
       <div className="container d-flex align-items-center">
         {bookmarkedManhwa.length > 0 ? (
           <div>
             {bookmarkedManhwa.map((manhwa, index) => (
-              <div className='history-episode-list text-decoration-none text-white' key={index}>
+              <div className='bookmark-episode-list text-decoration-none text-white' key={index}>
                 <div className="episode-card-left">
                   <img src={manhwa.imageSrc} className='episode-image' alt={manhwa.title} />
                 </div>
@@ -58,7 +58,7 @@ const Bookmarks = () => {
                   <Link to={`/manhwa/${manhwa.id}`} className='text-decoration-none text-white'>
                     <p className='episode-title fw-bold m-2'>{truncateTitle(manhwa.title)}</p>
                     <p className="text-white m-2"><FontAwesomeIcon style={{color:'gold'}} icon={faStar} /> {manhwa.rating}</p>
-                    {/* <div className="history-detail m-2 d-flex flex-wrap">
+                    {/* <div className="bookmark-detail m-2 d-flex flex-wrap">
                       <p className='text-white'>{limitSynopsis(manhwa.synopsis)}</p>
                     </div> */}
                     <p className="text-white m-2">{manhwa.status}</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../assets/css/ManhwaList.css";
 import { Spinner } from 'react-bootstrap';
@@ -14,7 +14,10 @@ const ManhwaList = () => {
   const [loading, setLoading] = useState(true);
   const [isFixed, setIsFixed] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const containerRef = useRef(null);
+  const [mostRecentChapter, setMostRecentChapter] = useState(null);
+
   // POPULAR
   useEffect(() => {
 
@@ -160,10 +163,56 @@ const ManhwaList = () => {
     }
     return manhwaTitle;
   };
+
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   let scrollAmount = 0;
+  //   let direction = 1; // 1 for right, -1 for left
+
+  //   const autoScroll = () => {
+  //     const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+  //     // Change direction if the container has reached either end
+  //     if (scrollAmount >= maxScrollLeft || scrollAmount <= 0) {
+  //       direction *= -1;
+  //     }
+
+  //     scrollAmount += direction * 1; // Adjust the speed by changing the multiplier
+  //     container.scrollLeft = scrollAmount;
+
+  //     requestAnimationFrame(autoScroll);
+  //   };
+
+  //   autoScroll();
+
+  //   return () => {
+  //     // Cleanup the animation frame when the component unmounts
+  //     cancelAnimationFrame(autoScroll);
+  //   };
+  // }, []);
+
+
+
+  useEffect(() => {
+    const getMostRecentChapter = () => {
+      const savedChapters = JSON.parse(localStorage.getItem('savedChapters')) || [];
+
+      if (savedChapters.length === 0) return null;
+
+      // Sort by time and get the most recent chapter
+      savedChapters.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+      return savedChapters[0]; // Return the most recent chapter
+    };
+
+    const chapter = getMostRecentChapter();
+    setMostRecentChapter(chapter);
+  }, []);
+
   return (
     <div id='bg-manhwalist' className="container-fluid">
 
-<div className="container container-recommend p-2">
+<div className="container container-recommend p-2" >
   {recommendManhwa.map((rec, index) => (
     <div key={index} className="recommend-card-container">
       <div className="recommend-card-background" style={{ backgroundImage: `url("${rec.image}")` }}></div>
@@ -180,9 +229,6 @@ const ManhwaList = () => {
     </div>
   ))}
 </div>
-
-<AdsterraAds/>
-
 
 <div className={`search-bar ${isFixed ? 'fixed' : ''} `}>
      <form onSubmit={handleSearch}>
@@ -206,8 +252,19 @@ const ManhwaList = () => {
       </div>
       </form>
     </div>
+    <AdsterraAds/>
 
-
+<div>
+      {mostRecentChapter ? (
+        <div className="">
+          <p className="text-start text-white fs-4 pt-4"><b>Latest</b> Read Chapter</p>
+        <p className='text-white'>{truncateTitle(mostRecentChapter.chapterTitle)}</p>
+        </div>
+      ) : (
+        {/* <p>No recent chapter available</p> */}
+      )}
+    
+</div>
 
 
       {/* POPULAR MANHWA */}
@@ -302,31 +359,30 @@ const ManhwaList = () => {
         ) : (
           newManhwa.map((manhwa, index) => (
             <Link
-              id="card"
-              className="col-sm-2 rounded d-flex flex-column justify-content-start align-items-center p-0"
-              key={index}
-              style={{ width: '30%', height: '200px', margin: '5px', overflow: 'hidden' }}
-              to={`/manhwa/${manhwa.link.split('/')[4]}`}
-            >
-              <div
-                className="row card-newmanhwa"
-                style={{
-                  width: '100%',
-                  height: '150px',
-                  backgroundImage: `url("${manhwa.imageSrc}")`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              ></div>
-              <div className="card-body d-flex flex-column align-items-center">
-                <p
-                  className="newmanhwa-title text-center text-decoration-none text-white"
-                >
-                  {manhwa.title}
-                </p>
-              </div>
-            </Link>
+  id="card-newmanhwa"
+  className="col-sm-2 rounded d-flex flex-column justify-content-start text-decoration-none align-items-center p-0"
+  key={index}
+  style={{ width: '30%', height: '200px', margin: '5px', overflow: 'hidden' }}
+  to={`/manhwa/${manhwa.link.split('/')[4]}`}
+>
+  <div
+    className="card-newmanhwa"
+    style={{
+      width: '100%',
+      height: '150px',
+      backgroundImage: `url("${manhwa.imageSrc}")`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+    }}
+  ></div>
+  <div className="newmanhwa-card-body d-flex flex-column align-items-center p-2">
+    <p className="newmanhwa-title text-white">{manhwa.title}</p>
+    <p className="newmanhwa-rating text-white">{manhwa.chapters[0].chapterTitle}</p>
+  </div>
+</Link>
+
+
           ))
         )}
         </div>

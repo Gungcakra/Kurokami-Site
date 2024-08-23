@@ -30,8 +30,8 @@ const DetailManhwa = () => {
     JSON.parse(localStorage.getItem('readChapters')) || []
   );
   // Scale state
-  const [scale, setScale] = useState(1);
-  const [opacity, setOpacity] = useState(1)
+  const [scale, setScale] = useState(1.1);
+  const [opacity, setOpacity] = useState(0)
 
   useEffect(() => {
     const fetchManhwaDetail = async () => {
@@ -58,12 +58,12 @@ const DetailManhwa = () => {
   // Handle scroll effect
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    const scaleFactor = Math.max(1.1, 1 + scrollPosition / 600);
+    const scaleFactor = Math.max(1, 1 + scrollPosition / 600);
     setScale(scaleFactor);
     
     // Set opacity based on scroll position
-    const newOpacity = Math.max(0, 1 - scrollPosition / 200);  // Adjust this value as needed
-    setOpacity(newOpacity);
+    const newOpacity = Math.min(1, scrollPosition / 200);
+      setOpacity(newOpacity);
   };
 
   // BACK Button

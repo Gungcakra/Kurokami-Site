@@ -5,7 +5,7 @@ import BottomNavBar from './components/BottomNavBar'; // Import the BottomNavBar
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Jadwal from './components/Jadwal';
 import SearchResults from './components/SearchResult';
-import History from './components/BookMarks';
+
 import GenreResults from './components/GenreResult';
 import './assets/css/App.css'
 import ManhwaList from './components/ManhwaList';
@@ -14,6 +14,7 @@ import ReadChapter from './components/ReadChapter';
 import Bookmarks from './components/BookMarks';
 import { motion } from 'framer-motion';
 import Info from './components/Info';
+import History from './components/HIstory';
 const App = () => {
   const location = useLocation();
   
