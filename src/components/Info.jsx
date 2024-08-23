@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../assets/css/Info.css'
-import { faHammer, faHandFist, faShield, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faHammer, faHandFist, faShield, faUser } from '@fortawesome/free-solid-svg-icons';
 const Info = () =>{
 
     return(
@@ -22,7 +22,7 @@ const Info = () =>{
     <FontAwesomeIcon icon={faShield} /> Privacy Policy
   </a>
     <a class="btn btn-dark m-0" type="button" data-bs-toggle="collapse" data-bs-target="#dev" aria-expanded="false" aria-controls="collapseExample">
-    <FontAwesomeIcon icon={faUser} /> Developer
+    <FontAwesomeIcon icon={faEdit} /> Saran
   </a>
    </div>
 
@@ -52,8 +52,9 @@ const Info = () =>{
 </div>
 
 <div class="collapse" id="dev">
-        <div className="col bg-dark m-2 rounded p-2">
-           <b className="text-white">Hallo</b>
+        <div className="col text-center bg-dark m-2 rounded p-2">
+           <b className="text-white text-center">Saran & Masukan</b>
+           <p className="text-white">Untuk Sementara, Jika ada Saran dan Masukan silahkan hubungi <a href="mailto:agungcakra888@gmail.com" className="text-white fw-bold">Email ini</a></p>
         </div>
 </div>
        <p class="text-center text-white pt-5">© 2024 Kurokami. All right reserved</p>
