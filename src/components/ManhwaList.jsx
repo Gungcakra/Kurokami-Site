@@ -254,14 +254,16 @@ const ManhwaList = () => {
     </div>
     <AdsterraAds/>
 
-<div>
+<div className="row">
       {mostRecentChapter ? (
-        <div className="">
+        <div className="row">
           <p className="text-start text-white fs-4 pt-4"><b>Latest</b> Read Chapter</p>
         <p className='text-white'>{truncateTitle(mostRecentChapter.chapterTitle)}</p>
         </div>
       ) : (
-        {/* <p>No recent chapter available</p> */}
+        <div className="row">
+          
+        </div>
       )}
     
 </div>
