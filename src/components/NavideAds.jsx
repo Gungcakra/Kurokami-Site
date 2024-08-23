@@ -2,16 +2,17 @@ import React, { useEffect } from 'react';
 
 const NativeAds = () => {
   useEffect(() => {
+    // Create the script element for the ad
     const script = document.createElement('script');
-    script.src = "//infantilecombination.com/b/X.VTszdEGSlR0VYYWvdEiXYGW_5/utZhXfIg/OeImN9nuuZ_UjlYkiPnTXU/1BM/TlMs5ONhzWQGt/NmT/UzxCMezLkn3JN/QQ";
     script.async = true;
-    script.referrerPolicy = 'no-referrer-when-downgrade';
+    script.src = "//pl24123036.cpmrevenuegate.com/2fcd62072a1e7925083e385969f8d372/invoke.js";
+    script.setAttribute('data-cfasync', 'false');
 
-    // Append the script to the container div
-    const adContainer = document.getElementById('adsterra-ad');
+    // Append the script to the container
+    const adContainer = document.getElementById('cpm-revenue-gate-ad');
     adContainer.appendChild(script);
 
-    // Clean up the script when the component is unmounted
+    // Cleanup when the component is unmounted
     return () => {
       if (adContainer.contains(script)) {
         adContainer.removeChild(script);
@@ -20,13 +21,13 @@ const NativeAds = () => {
   }, []);
 
   return (
-    <ins
-      id="adsterra-ad"
+    <div
+      id="cpm-revenue-gate-ad"
       style={{
         display: 'block',
-        width: '100%',
-        height: 'auto',
-        textAlign: 'center',
+        width: 'auto', // Set to 'auto' to accommodate ad dimensions
+        height: 'auto', // Set to 'auto' to accommodate ad dimensions
+        margin: '0 auto',
       }}
     />
   );

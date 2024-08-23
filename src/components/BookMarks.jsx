@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../assets/css/BookMarks.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import AdsterraAds from './AdsterraAds';
 
 const Bookmarks = () => {
   const [bookmarkedManhwa, setBookmarkedManhwa] = useState([]);
@@ -45,7 +46,7 @@ const Bookmarks = () => {
   };
   return (
     <div className="bookmark-container">
-      <p className='text-start text-white fs-2 fw-bold m-2'>Bookmarks</p>
+      <p className='text-center text-white fs-2 fw-bold m-2'>Bookmarks</p>
       <div className="container d-flex align-items-center">
         {bookmarkedManhwa.length > 0 ? (
           <div>
@@ -74,6 +75,8 @@ const Bookmarks = () => {
           <p className='text-center text-white'>No bookmarks added yet.</p>
         )}
       </div>
+      <AdsterraAds />
+
     </div>
   );
 };

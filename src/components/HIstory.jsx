@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../assets/css/History.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux'; // Sesuaikan dengan action yang sesuai
+import AdsterraAds from './AdsterraAds';
+import { Link } from 'react-router-dom';
+import { setManhwaId } from '../store';
 
 const History = () => {
   const [readChapters, setReadChapters] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getSavedChapters = () => {
@@ -39,31 +44,59 @@ const History = () => {
   };
 
   const truncateTitle = (manhwaTitle) => {
-    const maxLength = 30; // You can adjust the max length as needed
+    const maxLength = 35; // Anda dapat menyesuaikan panjang maksimal sesuai kebutuhan
     if (manhwaTitle.length > maxLength) {
       return manhwaTitle.substring(0, maxLength) + '...';
     }
     return manhwaTitle;
   };
 
+  const toSlug = (title) => {
+    const cleanedTitle = title.replace(/Bahasa Indonesia/i, '').trim();
+    return cleanedTitle
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  };
+
+  const handleLinkClick = (manhwaTitle) => {
+    const manhwaId = toSlug(manhwaTitle);
+    dispatch(setManhwaId(manhwaId));
+  };
+  // const handleDelete = (chapterTitle) => {
+  //   const updatedChapters = readChapters.filter(chapter => chapter.chapterTitle !== chapterTitle);
+  //   setReadChapters(updatedChapters);
+  //   localStorage.setItem('savedChapters', JSON.stringify(updatedChapters));
+  // };
+  
   return (
     <div className="history-container">
       <p className="text-center text-white fs-2 m-3 p-2 fw-bold">History</p>
-      <div className="history-content">
+      <div className="container history-content d-flex flex-column justify-content-center gap-2">
         {readChapters.length > 0 ? (
           readChapters.map((chapter, index) => (
-            <div key={index} className="history-chapter-item mb-3">
-              <div className="p-3 border border-secondary rounded shadow-sm bg-dark text-light">
+            <Link
+              to={`/chapter/${toSlug(chapter.chapterTitle)}`}
+              key={index}
+              className="history-chapter-item text-decoration-none"
+              onClick={() => handleLinkClick(chapter.manhwaTitle)}
+            >
+              <div className="p-3 border border-secondary rounded bg-dark text-light">
                 <p className="mb-2">{truncateTitle(chapter.chapterTitle)}</p>
                 <p className="mb-0"><FontAwesomeIcon icon={faClock} className='me-2'/> {formatTime(chapter.time)}</p>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
-          <div className="text-center p-4 bg-dark border border-secondary rounded shadow-sm text-light">
-            <p className="mb-0">No chapters read yet.</p>
-          </div>
+            <p className="mb-0 text-center text-white">No chapters read yet.</p>
+       
         )}
+<div className="pt-2">
+
+        <AdsterraAds />
+</div>
       </div>
     </div>
   );

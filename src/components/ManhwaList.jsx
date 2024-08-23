@@ -30,7 +30,7 @@ const ManhwaList = () => {
         }
         const result = await response.json();
         setPopularManhwa(result);
-        console.log(result);
+        // console.log(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -52,7 +52,7 @@ const ManhwaList = () => {
         }
         const result = await response.json();
         setRecommendManhwa(result);
-        console.log(result);
+        // console.log(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -76,7 +76,7 @@ const ManhwaList = () => {
         // Filter out entries with no chapters
         const filteredResult = result.filter(manhwa => manhwa.chapters && manhwa.chapters.length > 0);
         setNewManhwa(filteredResult);
-        console.log(filteredResult);
+        // console.log(filteredResult);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -97,7 +97,7 @@ const ManhwaList = () => {
         }
         const result = await response.json();
         setOnGoingManhwa(result);
-        console.log(result);
+        // console.log(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -119,7 +119,7 @@ const ManhwaList = () => {
         }
         const result = await response.json();
         setGenreList(result);
-        console.log(result);
+        // console.log(result);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {

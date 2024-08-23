@@ -8,10 +8,8 @@
   }
   
   .history-content {
-    flex: 1;
-    overflow-y: auto; /* Ensures scrolling within this div */
-    padding: 0 15px;
+    overflow-y: auto;
+
   }
-  
-  
+
   
