@@ -439,7 +439,6 @@ const ManhwaList = () => {
   </div>
 </div>
 )}
-<NativeAds />
 
 </div>
 
