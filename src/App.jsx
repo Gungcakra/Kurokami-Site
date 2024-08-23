@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 
 import BottomNavBar from './components/BottomNavBar'; // Import the BottomNavBar
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import Jadwal from './components/Jadwal';
 import SearchResults from './components/SearchResult';
 

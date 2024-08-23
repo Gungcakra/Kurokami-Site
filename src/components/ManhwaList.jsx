@@ -239,7 +239,7 @@ const ManhwaList = () => {
         <input
           type="text"
           className="form-control bg-dark text-light rounded"
-          placeholder="Search..."
+          placeholder="Cari....."
           aria-label="Search"
           aria-describedby="search-addon"
           value={searchQuery}
@@ -253,12 +253,11 @@ const ManhwaList = () => {
       </div>
       </form>
     </div>
-    <AdsterraAds/>
 
 <div className="row">
       {mostRecentChapter ? (
         <div className="row">
-          <p className="text-start text-white fs-4 pt-4"><b>Latest</b> Read Chapter</p>
+          <p className="text-start text-white fs-4 pt-4"><b>Terakhir</b> Baca</p>
         <p className='text-white'>{truncateTitle(mostRecentChapter.chapterTitle)}</p>
         </div>
       ) : (
@@ -270,7 +269,7 @@ const ManhwaList = () => {
 </div>
 
       {/* POPULAR MANHWA */}
-      <p className="text-start text-white fs-3 pt-3"><b>Popular</b> Manhwa</p>
+      <p className="text-start text-white fs-3 pt-3"><b>Populer</b></p>
       {loading ? (
   <div className='container d-flex justify-content-center align-items-center' style={{ width: '100%', height: '200px' }}>
     <Spinner animation="border" role="status" style={{ color:'#A41E34' }}>
@@ -349,7 +348,7 @@ const ManhwaList = () => {
 
 
  {/* NEW MANHWA */}
- <p className="text-start text-white fs-3 pt-3"><b>New</b> Manhwa Update</p>
+ <p className="text-start text-white fs-3 pt-3"><b>Update </b>Baru</p>
       <div id='container-manhwalist' className="row d-flex justify-content-center align-items-center">
       <div className="row d-flex justify-content-start">
         {loading ? (
@@ -393,8 +392,10 @@ const ManhwaList = () => {
 
       {/* ONGOING MANHWA */}
       <div className="row d-flex pt-2">
-      <div className="col-8"><p className="text-start text-white fs-3 pt-3"><b>On Going</b> Manhwa</p></div>
-      <div className="col-4 d-flex justify-content-end"><Link className="text-decoration-none text-white fs-4 pt-3">More <FontAwesomeIcon icon={faArrowRight} /></Link></div>
+      <div className="col-8"><p className="text-start text-white fs-3 pt-3"><b>On Going</b></p></div>
+      <div className="col-4 d-flex justify-content-end">
+      {/* <Link className="text-decoration-none text-white fs-4 pt-3">More <FontAwesomeIcon icon={faArrowRight} /></Link> */}
+      </div>
       </div>
       {loading ? (
   <div className='container d-flex justify-content-center align-items-center' style={{ width: '100%', height: '200px' }}>
@@ -439,6 +440,7 @@ const ManhwaList = () => {
   </div>
 </div>
 )}
+<AdsterraAds/>
 
 </div>
 

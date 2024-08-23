@@ -46,7 +46,7 @@ const Bookmarks = () => {
   };
   return (
     <div className="bookmark-container">
-      <p className='text-center text-white fs-2 fw-bold m-2'>Bookmarks</p>
+      <p className='text-center text-white fs-2 fw-bold m-2'>Daftar Pustaka</p>
       <div className="container d-flex align-items-center">
         {bookmarkedManhwa.length > 0 ? (
           <div>
@@ -72,7 +72,7 @@ const Bookmarks = () => {
             ))}
           </div>
         ) : (
-          <p className='text-center text-white'>No bookmarks added yet.</p>
+          <p className='text-center text-white'>Belum Ada Daftar Pustaka</p>
         )}
       </div>
       <AdsterraAds />

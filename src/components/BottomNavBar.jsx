@@ -37,7 +37,7 @@ const BottomNavBar = () => {
               }}
       >
         <FontAwesomeIcon icon={faBookBookmark} />
-        <span className="nav-texts">Bookmark</span>
+        <span className="nav-texts">Pustaka</span>
       </NavLink>
 
       <NavLink
@@ -47,7 +47,7 @@ const BottomNavBar = () => {
               }}
       >
         <FontAwesomeIcon icon={faHistory} />
-        <span className="nav-texts">History</span>
+        <span className="nav-texts">Riwayat</span>
       </NavLink>
 
       <NavLink

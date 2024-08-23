@@ -17,8 +17,15 @@ const History = () => {
       return savedChapters.sort((a, b) => new Date(b.time) - new Date(a.time));
     };
 
+   
+  
+
     const chapters = getSavedChapters();
     setReadChapters(chapters);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   const formatTime = (time) => {
@@ -31,13 +38,13 @@ const History = () => {
     const days = Math.floor(hours / 24);
 
     if (seconds < 60) {
-      return `${seconds} seconds ago`;
+      return `${seconds} dettik lalu`;
     } else if (minutes < 60) {
-      return `${minutes} minutes ago`;
+      return `${minutes} menit lalu`;
     } else if (hours < 24) {
-      return `${hours} hours ago`;
+      return `${hours} jam lalu`;
     } else if (days < 30) {
-      return `${days} days ago`;
+      return `${days} hari lalu`;
     } else {
       return chapterDate.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
     }
@@ -73,7 +80,7 @@ const History = () => {
   
   return (
     <div className="history-container">
-      <p className="text-center text-white fs-2 m-3 p-2 fw-bold">History</p>
+      <p className="text-center text-white fs-3 m-3 p-2 fw-bold">Riwayat Baca</p>
       <div className="container history-content d-flex flex-column justify-content-center gap-2">
         {readChapters.length > 0 ? (
           readChapters.map((chapter, index) => (
@@ -90,7 +97,7 @@ const History = () => {
             </Link>
           ))
         ) : (
-            <p className="mb-0 text-center text-white">No chapters read yet.</p>
+            <p className="mb-0 text-center text-white">Belum Ada Chapter Yang  Dibaca</p>
        
         )}
 <div className="pt-2">

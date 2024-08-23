@@ -45,6 +45,7 @@ const AdsterraAds = () => {
         width: '300px',
         height: '250px',
         margin: '0 auto',
+        transform:'scale(0.8)'
       }}
     />
   );

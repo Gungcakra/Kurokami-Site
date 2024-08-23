@@ -110,7 +110,7 @@ const DetailManhwa = () => {
       const updatedBookmarks = bookmarkedManhwa.filter(manhwa => manhwa.title !== manhwaDetails.title);
       localStorage.setItem('bookmarkedManhwa', JSON.stringify(updatedBookmarks));
       setIsBookmarked(false);
-      toast.warning('Removed from bookmarks', { autoClose: 2000 });
+      toast.warning('Dihapus Dari Pustaka', { autoClose: 2000 });
     } else {
       // Add to bookmarks
       const manhwaToBookmark = {
@@ -127,7 +127,7 @@ const DetailManhwa = () => {
       bookmarkedManhwa.push(manhwaToBookmark);
       localStorage.setItem('bookmarkedManhwa', JSON.stringify(bookmarkedManhwa));
       setIsBookmarked(true);
-      toast.success('Added to bookmarks', { autoClose: 2000 });
+      toast.success('Telah Ditambah Ke Pustaka', { autoClose: 2000 });
     }
   };
 
@@ -309,7 +309,6 @@ const DetailManhwa = () => {
             {limitSynopsis(manhwaDetails.synopsis)}
           </p>
         </div>
-        <AdsterraAds/>
 
         <p className="card-title fs-5 mt-4 text-white">Chapters ({totalChapter})</p>
         <div className="container d-flex gap-2">
@@ -380,8 +379,10 @@ const DetailManhwa = () => {
   </div>
 </div>
 
+<AdsterraAds/>
 
       </div>
+      
     </div>
   
   );
