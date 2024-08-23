@@ -134,13 +134,14 @@ const ReadChapter = () => {
         </div>
       )}
 
-      <nav className={`navbar fixed-top navbar-animated ${showNavbar ? 'show' : 'hide'}`}>
+      <nav className={`topbar fixed-top topbar-animated ${showNavbar ? 'show' : 'hide'}`}>
         <div className="container-fluid">
           <span
-            className="navbar-brand text-white"
+            className="topbar-brand text-white"
             onClick={() => navigate(-1)}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
+            Back
           </span>
         </div>
       </nav>

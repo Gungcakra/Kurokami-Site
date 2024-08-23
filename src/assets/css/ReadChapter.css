@@ -6,6 +6,10 @@
     background-color: #222831;
     padding: 15px;
 }
+.topbar{
+    background-color: #222831;
+    padding: 15px;
+}
 .navbar-animated {
     transform: translateY(100%);
     transition: transform 0.3s ease-in-out;
@@ -18,9 +22,29 @@
   .navbar-animated.hide {
     transform: translateY(100%);
   }
+
+.topbar-animated {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .topbar-animated.show {
+    transform: translateY(0);
+  }
+  
+  .topbar-animated.hide {
+    transform: translateY(-100%);
+  }
   .navbar-brand{
     background-color: #A41E34 ;
     padding: 5x;
+    width: 50px;
+    text-align: center;
+    border-radius: 20px;
+  }
+  .topbar-brand{
+    background-color: #A41E34 ;
+    padding: 7px;
     width: 50px;
     text-align: center;
     border-radius: 20px;
