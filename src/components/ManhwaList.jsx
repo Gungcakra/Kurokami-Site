@@ -5,6 +5,7 @@ import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faStar,faSearch,faFire, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AdsterraAds from './AdsterraAds';
+import NativeAds from './NavideAds';
 const ManhwaList = () => {
   const [popularManhwa, setPopularManhwa] = useState([]);
   const [newManhwa, setNewManhwa] = useState([]);
@@ -262,12 +263,11 @@ const ManhwaList = () => {
         </div>
       ) : (
         <div className="row">
-          
+
         </div>
       )}
     
 </div>
-
 
       {/* POPULAR MANHWA */}
       <p className="text-start text-white fs-3 pt-3"><b>Popular</b> Manhwa</p>
@@ -439,6 +439,7 @@ const ManhwaList = () => {
   </div>
 </div>
 )}
+<NativeAds />
 
 </div>
 
