@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../assets/css/ManhwaList.css";
 import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faStar,faSearch,faFire } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faStar,faSearch,faFire, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AdsterraAds from './AdsterraAds';
 const ManhwaList = () => {
   const [popularManhwa, setPopularManhwa] = useState([]);
@@ -153,7 +153,13 @@ const ManhwaList = () => {
     if (!searchQuery.trim()) return;
     navigate(`/search/${encodeURIComponent(searchQuery)}`);
   };
-
+  const truncateTitle = (manhwaTitle) => {
+    const maxLength = 30; // You can adjust the max length as needed
+    if (manhwaTitle.length > maxLength) {
+      return manhwaTitle.substring(0, maxLength) + '...';
+    }
+    return manhwaTitle;
+  };
   return (
     <div id='bg-manhwalist' className="container-fluid">
 
@@ -166,7 +172,7 @@ const ManhwaList = () => {
           <img src={rec.image} alt={rec.title} />
         </div>
         <div className="right-side">
-          <p className="title">{rec.title}</p>
+          <p className="title fw-bold">{truncateTitle(rec.title)}</p>
           <p className="ratings"><FontAwesomeIcon icon={faStar} style={{ color:'gold' }}/> {rec.rating}</p>
           <Link className="button-read text-decoration-none text-white" to={`/manhwa/${rec.url.split('/')[4]}`}><FontAwesomeIcon icon={faEye} /> Read</Link>
         </div>
@@ -178,7 +184,7 @@ const ManhwaList = () => {
 <AdsterraAds/>
 
 
-<div className={`search-bar ${isFixed ? 'fixed' : ''}`}>
+<div className={`search-bar ${isFixed ? 'fixed' : ''} `}>
      <form onSubmit={handleSearch}>
 
      
@@ -328,7 +334,10 @@ const ManhwaList = () => {
 
 
       {/* ONGOING MANHWA */}
-      <p className="text-start text-white fs-3 pt-3"><b>On Going</b> Manhwa</p>
+      <div className="row d-flex pt-2">
+      <div className="col-8"><p className="text-start text-white fs-3 pt-3"><b>On Going</b> Manhwa</p></div>
+      <div className="col-4 d-flex justify-content-end"><Link className="text-decoration-none text-white fs-4 pt-3">More <FontAwesomeIcon icon={faArrowRight} /></Link></div>
+      </div>
       {loading ? (
   <div className='container d-flex justify-content-center align-items-center' style={{ width: '100%', height: '200px' }}>
     <Spinner animation="border" role="status" style={{ color:'#A41E34' }}>
@@ -336,7 +345,7 @@ const ManhwaList = () => {
     </Spinner>
   </div>
 ) : (
-  <div className="popular-container">
+  <div className="popular-container pb-3">
   <div className="popular-card-container">
     {ongoingManhwa.map((pop, index) => (
       <Link

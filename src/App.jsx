@@ -13,6 +13,7 @@ import DetailManhwa from './components/DetailManhwa';
 import ReadChapter from './components/ReadChapter';
 import Bookmarks from './components/BookMarks';
 import { motion } from 'framer-motion';
+import Info from './components/Info';
 const App = () => {
   const location = useLocation();
   
@@ -31,7 +32,7 @@ const App = () => {
         <Route path="/genre/:genreId" element={<GenreResults />} />
         <Route path="/bookmark" element={<Bookmarks />}/>
         <Route path="/history" element={<History />}/>
-        <Route path="/profile" element={<div>Profile Page</div>} />
+        <Route path="/profile" element={<Info />} />
       </Routes>
       {shouldShowBottomNavBar && <BottomNavBar />}
     </div>

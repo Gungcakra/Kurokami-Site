@@ -15,6 +15,7 @@ const ReadChapter = () => {
   const [manhwaDetail, setManhwaDetail] = useState([]);
   const [showNavbar, setShowNavbar] = useState(false);
   const manhwaId = useSelector((state) => state.manhwaId);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -132,6 +133,17 @@ const ReadChapter = () => {
           </Spinner>
         </div>
       )}
+
+      <nav className={`navbar fixed-top navbar-animated ${showNavbar ? 'show' : 'hide'}`}>
+        <div className="container-fluid">
+          <span
+            className="navbar-brand text-white"
+            onClick={() => navigate(-1)}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </span>
+        </div>
+      </nav>
 
       <nav className={`navbar fixed-bottom navbar-animated ${showNavbar ? 'show' : 'hide'}`}>
         <div className="container-fluid">

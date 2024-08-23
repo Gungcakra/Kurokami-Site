@@ -339,13 +339,11 @@ const DetailManhwa = () => {
     readChapter.chapterTitle === chapter.chapterTitle &&
     readChapter.manhwaTitle === manhwaDetails.title
 );
-const isRead = Boolean(readChapter);
 
       return (
         <div
   key={index}
   className="col-12 col-md-6 episode-col"
-  style={{ opacity: isRead ? 0.6 : 1 }}
 >
   <Link
     to={`/chapter/${updatedUrl}`}

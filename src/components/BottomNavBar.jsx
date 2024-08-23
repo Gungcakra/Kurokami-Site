@@ -4,7 +4,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../assets/css/BottomNavBar.css'; // Import the CSS file for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faCalendar, faHistory, faUser, faBookBookmark, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faCalendar, faHistory, faUser, faBookBookmark, faBook, faInfo, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const BottomNavBar = () => {
   
@@ -56,8 +56,8 @@ const BottomNavBar = () => {
                 return isActive ? "nav-links active" : "nav-links text-white";
               }}
       >
-        <FontAwesomeIcon icon={faUser} />
-        <span className="nav-texts">Profile</span>
+        <FontAwesomeIcon icon={faInfoCircle} />
+        <span className="nav-texts">Info</span>
       </NavLink>
       </div>
     </div>
