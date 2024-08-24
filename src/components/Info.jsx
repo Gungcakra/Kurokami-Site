@@ -7,7 +7,7 @@ const Info = () =>{
         <>
         <div className="info-container">
     <h1 className="text-white text-center pt-3 fw-bold">Info</h1>
-    {/* <h1 className="text-white text-center pt-3 fw-bold">Nabil</h1> */}
+    <h1 className="text-white text-center pt-3 fw-bold">Nabil</h1>
     <div className="col d-flex justify-content-center ">
         <div className="info-col col-sm-12 bg-dark p-2 rounded">
 
