@@ -111,7 +111,6 @@ const GenreResults = () => {
       <p className="text-start text-white fs-3 mt-5 pt-4 m-2">
         <b>Genre</b> Results for "{genreId}"
       </p>
-      <AdsterraAds />
 
       <div id="container-genre-result" className="d-flex justify-content-center">
         {loadingGenre ? (
@@ -149,6 +148,7 @@ const GenreResults = () => {
           ))
         )}
       </div>
+      <AdsterraAds />
 
       {!loadingGenre && genreResults.pagination.length > 0 && (
         <div className="pagination-container d-flex justify-content-center">

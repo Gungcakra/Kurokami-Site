@@ -13,6 +13,7 @@ const ManhwaList = () => {
   const [newManhwa, setNewManhwa] = useState([]);
   const [ongoingManhwa, setOnGoingManhwa] = useState([]);
   const [recommendManhwa, setRecommendManhwa] = useState([])
+  const [recommendationManhwa, setRecommendationManhwa] = useState([])
   const [genreList, setGenreList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isFixed, setIsFixed] = useState(false);
@@ -46,7 +47,7 @@ const ManhwaList = () => {
   // POPULAR
   useEffect(() => {
 
-    const fetchRecommendManhwa = async () => {
+    const fetchRecommend = async () => {
       try {
         const response = await fetch('https://kurokami.vercel.app/api/manhwa-recommend');
         if (!response.ok) {
@@ -62,7 +63,29 @@ const ManhwaList = () => {
       }
     };
 
-    fetchRecommendManhwa();
+    fetchRecommend();
+  }, []);
+
+  // RECOMENDATION
+  useEffect(() => {
+
+    const fetchRecomendation = async () => {
+      try {
+        const response = await fetch('https://kurokami.vercel.app/api/manhwa-recomendation');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setRecommendationManhwa(result);
+        // console.log(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecomendation();
   }, []);
 
 
@@ -383,6 +406,57 @@ const ManhwaList = () => {
   </div>
 )}
 
+
+     {/* ONGOING MANHWA */}
+     <div className="row d-flex pt-2">
+      <div className="col-8"><p className="text-start text-white fs-3 pt-3"><b>Rekomendasi</b></p></div>
+      <div className="col-4 d-flex justify-content-end">
+      {/* <Link className="text-decoration-none text-white fs-4 pt-3">More <FontAwesomeIcon icon={faArrowRight} /></Link> */}
+      </div>
+      </div>
+      {loading ? (
+  <div className='container d-flex justify-content-center align-items-center' style={{ width: '100%', height: '200px' }}>
+    <Spinner animation="border" role="status" style={{ color:'#A41E34' }}>
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  </div>
+) : (
+  <div className="popular-container pb-3">
+  <div className="popular-card-container">
+    {recommendationManhwa.map((pop, index) => (
+      <Link
+        id="card"
+        className="popular-manhwa-card"
+        key={index}
+        to={`/manhwa/${pop.link.split('/')[4]}`}
+      >
+          <div
+      className="popular-image"
+      style={{
+        width: "100%",
+        height: "150px",
+        backgroundImage: `url("${pop.imageSrc}")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+      data-index={`#${index + 1}`}
+    >
+    </div>
+
+        <div className="card-body d-flex flex-column align-items-center">
+          <p className="popular-title text-center text-decoration-none text-white">
+            {pop.title}
+          </p>
+          <p className="popular-chapter text-center text-decoration-none text-white">
+            {pop.chapter}
+          </p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</div>
+)}
 
 
 

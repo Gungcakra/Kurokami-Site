@@ -111,7 +111,6 @@ const SearchResults = () => {
       <p className="text-start text-white fs-3 mt-5 pt-4 m-2">
         <b>Search</b> Results for "{query}"
       </p>
-      <AdsterraAds />
 
       <div id="container-search-result" className="d-flex justify-content-center">
         {loadingsearch ? (
@@ -149,6 +148,7 @@ const SearchResults = () => {
           ))
         )}
       </div>
+      <AdsterraAds />
 
       {!loadingsearch && searchResults.pagination.length > 0 && (
         <div className="pagination-container d-flex justify-content-center">
