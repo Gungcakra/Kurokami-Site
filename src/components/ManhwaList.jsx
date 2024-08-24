@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../assets/css/ManhwaList.css";
 import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faStar,faSearch,faFire, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faStar,faSearch,faFire, faArrowLeft, faArrowRight, faClock } from '@fortawesome/free-solid-svg-icons';
 import AdsterraAds from './AdsterraAds';
 import NativeAds from './NavideAds';
 import { setManhwaId } from '../store';
@@ -212,6 +212,28 @@ const ManhwaList = () => {
     setMostRecentChapter(chapter);
   }, []);
 
+  const formatTime = (time) => {
+    const now = new Date();
+    const chapterDate = new Date(time);
+    const diff = now - chapterDate;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (seconds < 60) {
+      return `${seconds} dettik lalu`;
+    } else if (minutes < 60) {
+      return `${minutes} menit lalu`;
+    } else if (hours < 24) {
+      return `${hours} jam lalu`;
+    } else if (days < 30) {
+      return `${days} hari lalu`;
+    } else {
+      return chapterDate.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
+  };
+  
   const toSlug = (title) => {
     const cleanedTitle = title.replace(/Bahasa Indonesia/i, '').trim();
     return cleanedTitle
@@ -270,13 +292,14 @@ const ManhwaList = () => {
     </div>
 
 
-      {mostRecentChapter ? (
-        <div className=" d-flex flex-column justify-content-center">
-  <p className="text-start text-white fs-4 pt-4"><b>Terakhir</b> Baca</p>
-  <Link className="last-read-col row p-2 m-1 bg-dark rounded d-flex align-items-center text-decoration-none"to={`/chapter/${toSlug(mostRecentChapter.chapterTitle)}`} onClick={handleLinkClick(mostRecentChapter.manhwaTitle)}>
-    <p className="text-white m-0">{truncateTitle(mostRecentChapter.chapterTitle)}</p>
-  </Link>
-</div>
+    {mostRecentChapter ? (
+      <div className=" d-flex flex-column justify-content-center">
+        <p className="text-start text-white fs-4 pt-4"><b>Terakhir</b> Baca</p>
+        <Link className="last-read-col p-2 m-1 bg-dark rounded d-flex flex-column text-decoration-none"to={`/chapter/${toSlug(mostRecentChapter.chapterTitle)}`} onClick={handleLinkClick(mostRecentChapter.manhwaTitle)}>
+          <p className="text-start text-white m-0">{truncateTitle(mostRecentChapter.chapterTitle)}</p>
+          <p className="text-white m-0"><FontAwesomeIcon icon={faClock} /> {formatTime(mostRecentChapter.time)}</p>
+        </Link>
+      </div>
 
       ) : (
         <div className="row">
