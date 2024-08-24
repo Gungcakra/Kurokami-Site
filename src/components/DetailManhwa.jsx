@@ -26,9 +26,7 @@ const DetailManhwa = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const idManhwa = id; // Ensure idManhwa is correct
-  const [readChapters, setReadChapters] = useState(
-    JSON.parse(localStorage.getItem('readChapters')) || []
-  );
+  const [readChapters, setReadChapters] = useState();
   // Scale state
   const [scale, setScale] = useState(1.1);
   const [opacity, setOpacity] = useState(0)
@@ -47,14 +45,40 @@ const DetailManhwa = () => {
         const bookmarkedManhwa = JSON.parse(localStorage.getItem('bookmarkedManhwa')) || [];
         const isAlreadyBookmarked = bookmarkedManhwa.some(manhwa => manhwa.title === result.title);
         setIsBookmarked(isAlreadyBookmarked);
+  
+        // Get saved chapters for this manhwa
+        const savedChapters = getSavedChaptersByManhwaTitle(result.title);
+        setReadChapters(savedChapters);  // Assuming you have a state to hold the filtered chapters
+  
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchManhwaDetail();
   }, [id]);
+  
 
+  const getSavedChaptersByManhwaTitle = (manhwaTitle) => {
+    const savedChapters = JSON.parse(localStorage.getItem('savedChapters')) || [];
+    const filteredChapters = savedChapters.filter(chapter => chapter.manhwaTitle === manhwaTitle);
+    return filteredChapters;
+  };
+  
+  const extractChapterNumber = (chapterTitle) => {
+    const match = chapterTitle.match(/Chapter\s(\d+)/i);
+    return match ? `Chapter ${match[1]}` : null;
+  };
+
+  const isChapterRead = (chapterTitle) => {
+    const extractedChapterTitle = extractChapterNumber(chapterTitle);
+    return readChapters.some(chapter => {
+      const savedChapterTitle = extractChapterNumber(chapter.chapterTitle);
+      return savedChapterTitle === extractedChapterTitle && chapter.manhwaTitle === manhwaDetails.title;
+    });
+  };
+
+  
   // Handle scroll effect
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
@@ -191,30 +215,26 @@ const DetailManhwa = () => {
   // };
   
   
-  const timeAgo = (timestamp) => {
+  const formatTime = (time) => {
     const now = new Date();
-    const then = new Date(timestamp);
-    const seconds = Math.floor((now - then) / 1000);
-    const interval = Math.floor(seconds / 31536000); // Seconds in a year
-  
-    if (interval > 1) return `${interval} years ago`;
-  
-    const monthInterval = Math.floor(seconds / 2592000); // Seconds in a month
-    if (monthInterval > 1) return `${monthInterval} months ago`;
-  
-    const weekInterval = Math.floor(seconds / 604800); // Seconds in a week
-    if (weekInterval > 1) return `${weekInterval} weeks ago`;
-  
-    const dayInterval = Math.floor(seconds / 86400); // Seconds in a day
-    if (dayInterval > 1) return `${dayInterval} days ago`;
-  
-    const hourInterval = Math.floor(seconds / 3600); // Seconds in an hour
-    if (hourInterval > 1) return `${hourInterval} hours ago`;
-  
-    const minuteInterval = Math.floor(seconds / 60); // Seconds in a minute
-    if (minuteInterval > 1) return `${minuteInterval} minutes ago`;
-  
-    return `${Math.floor(seconds)} seconds ago`;
+    const chapterDate = new Date(time);
+    const diff = now - chapterDate;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (seconds < 60) {
+      return `${seconds} detik lalu`;
+    } else if (minutes < 60) {
+      return `${minutes} menit lalu`;
+    } else if (hours < 24) {
+      return `${hours} jam lalu`;
+    } else if (days < 30) {
+      return `${days} hari lalu`;
+    } else {
+      return chapterDate.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
   };
   
   
@@ -237,8 +257,6 @@ const DetailManhwa = () => {
   //   return manhwa && manhwa.chapters.includes(chapterTitle);
   // };
   
-
-
   return (
  
   
@@ -327,55 +345,40 @@ const DetailManhwa = () => {
         </div>
         <div className="episode-list-card">
   <div className="episode-list-container">
-    {sortedChapter.map((chapter, index) => {
-      const updatedUrl = chapter.chapterLink.includes("manhwaindo.net")
-        ? chapter.chapterLink.replace("https://manhwaindo.net/", "")
-        : chapter.chapterLink;
+  {sortedChapter.map((chapter, index) => {
+        const updatedUrl = chapter.chapterLink.includes("manhwaindo.net")
+          ? chapter.chapterLink.replace("https://manhwaindo.net/", "")
+          : chapter.chapterLink;
 
-      // Check if the chapter has been read
-      const readChapter = readChapters.find(
-  (readChapter) => 
-    readChapter.chapterTitle === chapter.chapterTitle &&
-    readChapter.manhwaTitle === manhwaDetails.title
-);
-
-      return (
-        <div
-  key={index}
-  className="col-12 col-md-6 episode-col"
->
-  <Link
-    to={`/chapter/${updatedUrl}`}
-    className="episode-link text-decoration-none"
-  >
-    <div className="d-flex episode-card-body">
-      <div className="col-7 d-flex flex-column">
-        <strong>{chapter.chapterTitle}</strong>
-        <p>{chapter.chapterDate}</p>
-      </div>
-      <div className="col d-flex align-items-center">
-      {/* {isRead && (
-          <p>
-            {timeAgo(
-              readChapters.find(
-                (ch) => ch.chapterTitle === chapter.chapterTitle && ch.manhwaTitle === manhwaDetails.title
-              )?.time
-            )}
-          </p>
-        )} */}
-      </div>
-    </div>
-  </Link>
-   {/* <button
-            className="remove-button"
-            onClick={() => removeReadChapter(chapter.chapterTitle, manhwaDetails.title)}
+        const isRead = isChapterRead(chapter.chapterTitle);
+        return (
+          <div
+            key={index}
+            className="col-12 col-md-6 episode-col"
+            style={{ opacity: isRead ? '0.6' : '1' }} // Ubah background jika cocok
           >
-            Remove
-          </button> */}
-</div>
-
-      );
-    })}
+            <Link
+              to={`/chapter/${updatedUrl}`}
+              className="episode-link text-decoration-none"
+            >
+              <div className="d-flex episode-card-body">
+                <div className="col-7 d-flex flex-column">
+                  <strong>{chapter.chapterTitle}</strong>
+                  <p>{chapter.chapterDate}</p>
+                </div>
+                <div className="col d-flex align-items-center">
+                  {isRead && (
+                    
+                    <p className="text-white">
+                    {chapter.time}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </Link>
+          </div>
+        );
+      })}
   </div>
 </div>
 
