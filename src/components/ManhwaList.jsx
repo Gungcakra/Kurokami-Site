@@ -222,7 +222,7 @@ const ManhwaList = () => {
     const days = Math.floor(hours / 24);
 
     if (seconds < 60) {
-      return `${seconds} dettik lalu`;
+      return `${seconds} detik lalu`;
     } else if (minutes < 60) {
       return `${minutes} menit lalu`;
     } else if (hours < 24) {
