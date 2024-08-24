@@ -16,10 +16,6 @@ const History = () => {
       const savedChapters = JSON.parse(localStorage.getItem('savedChapters')) || [];
       return savedChapters.sort((a, b) => new Date(b.time) - new Date(a.time));
     };
-
-   
-  
-
     const chapters = getSavedChapters();
     setReadChapters(chapters);
   }, []);

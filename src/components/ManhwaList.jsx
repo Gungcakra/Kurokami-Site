@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faStar,faSearch,faFire, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import AdsterraAds from './AdsterraAds';
 import NativeAds from './NavideAds';
+import { setManhwaId } from '../store';
+import { useDispatch } from 'react-redux';
 const ManhwaList = () => {
   const [popularManhwa, setPopularManhwa] = useState([]);
   const [newManhwa, setNewManhwa] = useState([]);
@@ -18,7 +20,7 @@ const ManhwaList = () => {
   const navigate = useNavigate();
   const containerRef = useRef(null);
   const [mostRecentChapter, setMostRecentChapter] = useState(null);
-
+  const dispatch = useDispatch();
   // POPULAR
   useEffect(() => {
 
@@ -210,6 +212,19 @@ const ManhwaList = () => {
     setMostRecentChapter(chapter);
   }, []);
 
+  const toSlug = (title) => {
+    const cleanedTitle = title.replace(/Bahasa Indonesia/i, '').trim();
+    return cleanedTitle
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  };
+  const handleLinkClick = (manhwaTitle) => {
+    const manhwaId = toSlug(manhwaTitle);
+    dispatch(setManhwaId(manhwaId));
+  };
   return (
     <div id='bg-manhwalist' className="container-fluid">
 
@@ -254,19 +269,20 @@ const ManhwaList = () => {
       </form>
     </div>
 
-<div className="row">
+
       {mostRecentChapter ? (
-        <div className="row">
-          <p className="text-start text-white fs-4 pt-4"><b>Terakhir</b> Baca</p>
-        <p className='text-white'>{truncateTitle(mostRecentChapter.chapterTitle)}</p>
-        </div>
+        <div className=" d-flex flex-column justify-content-center">
+  <p className="text-start text-white fs-4 pt-4"><b>Terakhir</b> Baca</p>
+  <Link className="last-read-col row p-2 m-1 bg-dark rounded d-flex align-items-center text-decoration-none"to={`/chapter/${toSlug(mostRecentChapter.chapterTitle)}`} onClick={handleLinkClick(mostRecentChapter.manhwaTitle)}>
+    <p className="text-white m-0">{truncateTitle(mostRecentChapter.chapterTitle)}</p>
+  </Link>
+</div>
+
       ) : (
         <div className="row">
 
         </div>
       )}
-    
-</div>
 
       {/* POPULAR MANHWA */}
       <p className="text-start text-white fs-3 pt-3"><b>Populer</b></p>
