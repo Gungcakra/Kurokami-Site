@@ -6,3 +6,17 @@
     font-style: normal;
 
   }
+  #app{
+    scrollbar-color: transparent transparent;
+  }
+  #app::-webkit-scrollbar {
+    display: none;
+}
+
+#app::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Menghilangkan warna thumb */
+}
+
+#app::-webkit-scrollbar-track {
+    background-color: transparent; /* Menghilangkan warna track */
+}
