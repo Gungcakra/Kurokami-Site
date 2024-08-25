@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../assets/css/Info.css'
 import { faEdit, faHammer, faHandFist, faShield, faUser } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 const Info = () =>{
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
     return(
         <>
         <div className="info-container">
