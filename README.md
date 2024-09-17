@@ -1,4 +1,4 @@
-# Kurokami - Manhwa & Manga Reader
+# Kurokami - Manhwa Reader
 ## Tampilan Khusus Mobile
 Kurokami adalah sebuah website untuk membaca manhwa dan manga yang dibangun menggunakan React.js, HTML, Bootstrap, dan CSS. Website ini memanfaatkan API untuk menyediakan berbagai fitur yang memudahkan pengguna dalam membaca, mencari, dan mengelola manhwa favorit mereka.
 
