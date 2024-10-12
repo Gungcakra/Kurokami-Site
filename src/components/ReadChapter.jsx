@@ -121,6 +121,7 @@ const ReadChapter = () => {
     );
   }
 
+  // console.log(manhwaMoreDetail.chapters.chapterLink)
   return (
     <div className="container-read-chapter">
       {chapterData ? (
@@ -164,17 +165,17 @@ const ReadChapter = () => {
           <div className="container d-flex justify-content-center m-2">
             <Dropdown onSelect={handleSelect}>
               <Dropdown.Toggle className="bg-dark text-white">
-                {manhwaDetail.find(chapter => chapter.chapterLink.split('/')[3] === selectedChapter)?.chapterTitle || 'Select Chapter'}
+                {manhwaDetail.find(chapters => chapters.chapterLink.split('/')[3] === selectedChapter)?.chapterNum || 'Select Chapter'}
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="bg-dark custom-dropdown-menu">
-                {manhwaDetail.map((chapter, index) => (
+                {manhwaDetail.map((chapters, index) => (
                   <Dropdown.Item className='text-white'
                     key={index}
-                    eventKey={chapter.chapterLink}
-                    active={chapter.chapterLink.split('/')[3] === selectedChapter}
+                    eventKey={chapters.chapterLink}
+                    active={chapters.chapterLink.split('/')[3] === selectedChapter}
                   >
-                    {chapter.chapterTitle}
+                    {chapters.chapterNum}
                   </Dropdown.Item>
                 ))}
               </Dropdown.Menu>

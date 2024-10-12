@@ -40,6 +40,7 @@ const DetailManhwa = () => {
         }
         const result = await response.json();
         setManhwaDetails(result);
+        console.log(result)
         
         // Check if this manhwa is already bookmarked
         const bookmarkedManhwa = JSON.parse(localStorage.getItem('bookmarkedManhwa')) || [];
@@ -47,8 +48,8 @@ const DetailManhwa = () => {
         setIsBookmarked(isAlreadyBookmarked);
   
         // Get saved chapters for this manhwa
-        const savedChapters = getSavedChaptersByManhwaTitle(result.title);
-        setReadChapters(savedChapters);  // Assuming you have a state to hold the filtered chapters
+        // const savedChapters = getSavedChaptersByManhwaTitle(result.title);
+        // setReadChapters(savedChapters);
   
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -65,18 +66,18 @@ const DetailManhwa = () => {
     return filteredChapters;
   };
   
-  const extractChapterNumber = (chapterTitle) => {
-    const match = chapterTitle.match(/Chapter\s(\d+)/i);
+  const extractChapterNumber = (chapterNum) => {
+    const match = chapterNum.match(/Chapter\s(\d+)/i);
     return match ? `Chapter ${match[1]}` : null;
   };
 
-  const isChapterRead = (chapterTitle) => {
-    const extractedChapterTitle = extractChapterNumber(chapterTitle);
-    return readChapters.some(chapter => {
-      const savedChapterTitle = extractChapterNumber(chapter.chapterTitle);
-      return savedChapterTitle === extractedChapterTitle && chapter.manhwaTitle === manhwaDetails.title;
-    });
-  };
+  // const isChapterRead = (chapterNum) => {
+  //   const extractedChapterNum = extractChapterNumber(chapterNum);
+  //   return readChapters.some(chapter => {
+  //     const savedChapterNum = extractChapterNumber(chapter.chapterNum);
+  //     return savedChapterNum === extractedChapterNum && chapter.manhwaTitle === manhwaDetails.title;
+  //   });
+  // };
 
   
   // Handle scroll effect
@@ -173,8 +174,8 @@ const DetailManhwa = () => {
     };
   
     // Ekstrak nomor dari judul
-    const numberA = extractNumber(a.chapterTitle);
-    const numberB = extractNumber(b.chapterTitle);
+    const numberA = extractNumber(a.chapterNum);
+    const numberB = extractNumber(b.chapterNum);
   
     // Tentukan prioritas pengurutan
     if (numberA !== null && numberB !== null) {
@@ -188,7 +189,7 @@ const DetailManhwa = () => {
       return isDescending ? 1 : -1;
     } else {
       // Kedua chapter tidak memiliki nomor, urutkan secara default (misalnya berdasarkan judul)
-      return isDescending ? b.chapterTitle.localeCompare(a.chapterTitle) : a.chapterTitle.localeCompare(b.chapterTitle);
+      return isDescending ? b.chapterNum.localeCompare(a.chapterNum) : a.chapterNum.localeCompare(b.chapterNum);
     }
   });
   
@@ -196,18 +197,18 @@ const DetailManhwa = () => {
   const totalChapter = manhwaDetails.chapters.length;
 
 
-  // const addReadChapter = (chapterTitle, manhwaTitle) => {
+  // const addReadChapter = (chapterNum, manhwaTitle) => {
   //   dispatch(setManhwaId(idManhwa));
   //   const currentTime = new Date().toISOString(); // Save current time in ISO format
   //   const updatedReadChapters = readChapters.map(chapter => 
-  //     chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle
+  //     chapter.chapterNum === chapterNum && chapter.manhwaTitle === manhwaTitle
   //       ? { ...chapter, time: currentTime }
   //       : chapter
   //   );
     
-  //   // Check if chapterTitle with manhwaTitle was not found and add it
-  //   if (!updatedReadChapters.some(chapter => chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)) {
-  //     updatedReadChapters.push({ chapterTitle, manhwaTitle, time: currentTime });
+  //   // Check if chapterNum with manhwaTitle was not found and add it
+  //   if (!updatedReadChapters.some(chapter => chapter.chapterNum === chapterNum && chapter.manhwaTitle === manhwaTitle)) {
+  //     updatedReadChapters.push({ chapterNum, manhwaTitle, time: currentTime });
   //   }
     
   //   localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
@@ -239,9 +240,9 @@ const DetailManhwa = () => {
   
   
 
-  // const removeReadChapter = (chapterTitle, manhwaTitle) => {
+  // const removeReadChapter = (chapterNum, manhwaTitle) => {
   //   const updatedReadChapters = readChapters.filter(chapter => 
-  //     !(chapter.chapterTitle === chapterTitle && chapter.manhwaTitle === manhwaTitle)
+  //     !(chapter.chapterNum === chapterNum && chapter.manhwaTitle === manhwaTitle)
   //   );
     
   //   localStorage.setItem('readChapters', JSON.stringify(updatedReadChapters));
@@ -249,12 +250,12 @@ const DetailManhwa = () => {
   // };
   
   // Function to check if a chapter has been read
-  // const isChapterRead = (chapterTitle) => {
+  // const isChapterRead = (chapterNum) => {
   //   const readChapters = JSON.parse(localStorage.getItem('readChapters')) || [];
   //   const manhwaTitle = manhwaDetails.title;
   
   //   const manhwa = readChapters.find(item => item.manhwaTitle === manhwaTitle);
-  //   return manhwa && manhwa.chapters.includes(chapterTitle);
+  //   return manhwa && manhwa.chapters.includes(chapterNum);
   // };
   
   return (
@@ -346,16 +347,15 @@ const DetailManhwa = () => {
         <div className="episode-list-card">
   <div className="episode-list-container">
   {sortedChapter.map((chapter, index) => {
-        const updatedUrl = chapter.chapterLink.includes("manhwaindo.net")
-          ? chapter.chapterLink.replace("https://manhwaindo.net/", "")
+        const updatedUrl = chapter.chapterLink.includes("kiryuu.org")
+          ? chapter.chapterLink.replace("https://kiryuu.org/", "")
           : chapter.chapterLink;
 
-        const isRead = isChapterRead(chapter.chapterTitle);
+        {/* const isRead = isChapterRead(chapter.chapterNum); */}
         return (
           <div
             key={index}
             className="col-12 col-md-6 episode-col"
-            style={{ opacity: isRead ? '0.6' : '1' }} // Ubah background jika cocok
           >
             <Link
               to={`/chapter/${updatedUrl}`}
@@ -363,16 +363,16 @@ const DetailManhwa = () => {
             >
               <div className="d-flex episode-card-body">
                 <div className="col-7 d-flex flex-column">
-                  <strong>{chapter.chapterTitle}</strong>
+                  <strong>{chapter.chapterNum}</strong>
                   <p>{chapter.chapterDate}</p>
                 </div>
                 <div className="col d-flex align-items-center">
-                  {isRead && (
+                  {/* {isRead && (
                     
                     <p className="text-white">
                     {chapter.time}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
             </Link>
@@ -382,7 +382,7 @@ const DetailManhwa = () => {
   </div>
 </div>
 
-<AdsterraAds/>
+{/* <AdsterraAds/> */}
 
       </div>
       

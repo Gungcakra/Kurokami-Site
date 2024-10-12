@@ -98,7 +98,7 @@ const History = () => {
         )}
 <div className="pt-2">
 
-        <AdsterraAds />
+        {/* <AdsterraAds /> */}
 </div>
       </div>
     </div>

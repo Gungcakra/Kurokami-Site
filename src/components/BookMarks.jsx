@@ -75,7 +75,7 @@ const Bookmarks = () => {
           <p className='text-center text-white'>Belum Ada Daftar Pustaka</p>
         )}
       </div>
-      <AdsterraAds />
+      {/* <AdsterraAds /> */}
 
     </div>
   );

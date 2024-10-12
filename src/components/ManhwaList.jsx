@@ -138,7 +138,7 @@ const ManhwaList = () => {
   useEffect(() => {
     const fetchGenre = async () => {
       try {
-        const response = await fetch('https://kurokami.vercel.app/api/data');
+        const response = await fetch('https://kurokami.vercel.app/api/genres');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -553,7 +553,7 @@ const ManhwaList = () => {
   </div>
 </div>
 )}
-<AdsterraAds/>
+{/* <AdsterraAds/> */}
 
 </div>
 
