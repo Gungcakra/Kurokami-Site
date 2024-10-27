@@ -148,8 +148,7 @@ const GenreResults = () => {
           ))
         )}
       </div>
-      <AdsterraAds />
-
+  
       {!loadingGenre && genreResults.pagination.length > 0 && (
         <div className="pagination-container d-flex justify-content-center">
           {currentPage > 1 ? (
