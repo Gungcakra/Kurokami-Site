@@ -33,7 +33,7 @@ const Info = () =>{
   <div class="collapse" id="collapseExample">
         <div className="col bg-dark m-2 rounded p-2">
             <p className="text-white">
-            The content available in the <b>Kurokami</b> app is sourced directly from the website  <b>kiryuu.org</b> . We do not host, store, or own any of the content provided within our application. All content remains the property of its respective owners, and our app simply aggregates this content for easy access. If you have any concerns regarding the content, please refer to the original source at  <b>kiryuu.org</b> .
+            The content available in the <b>Kurokami</b> app is sourced directly from the website  <b>komikstation.co</b> . We do not host, store, or own any of the content provided within our application. All content remains the property of its respective owners, and our app simply aggregates this content for easy access. If you have any concerns regarding the content, please refer to the original source at  <b>komikstation.co</b> .
             </p>
         </div>
 </div>

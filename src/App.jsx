@@ -19,7 +19,6 @@ import History from './components/HIstory';
 const App = () => {
   const location = useLocation();
   
-  // Determine if BottomNavBar should be shown
   const shouldShowBottomNavBar = ['/', '/jadwal', '/history', '/profile','/bookmark'].includes(location.pathname);
 
   return (

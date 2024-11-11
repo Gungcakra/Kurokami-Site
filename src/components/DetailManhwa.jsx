@@ -347,8 +347,8 @@ const DetailManhwa = () => {
         <div className="episode-list-card">
   <div className="episode-list-container">
   {sortedChapter.map((chapter, index) => {
-        const updatedUrl = chapter.chapterLink.includes("kiryuu.org")
-          ? chapter.chapterLink.replace("https://kiryuu.org/", "")
+        const updatedUrl = chapter.chapterLink.includes("komikstation.co")
+          ? chapter.chapterLink.replace("https://komikstation.co/", "")
           : chapter.chapterLink;
 
         {/* const isRead = isChapterRead(chapter.chapterNum); */}
