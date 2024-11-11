@@ -148,8 +148,7 @@ const SearchResults = () => {
           ))
         )}
       </div>
-      <AdsterraAds />
-
+      
       {!loadingsearch && searchResults.pagination.length > 0 && (
         <div className="pagination-container d-flex justify-content-center">
           {currentPage > 1 ? (
