@@ -4,222 +4,11 @@
   min-height: 100vh;
 }
 
-.adsterra-ads {
-  margin: 0 auto;
-  text-align: center;
-  display: none;
-}
-
-#container-manhwalist {
-  background-color: #0b0c0e;
-}
-
-#card {
-  background-color: #222831;
-  text-decoration: none;
-}
-
-.card-img-top {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-}
-
-
-.newmanhwa-card-body {
-  background-color: #222831;
-  height: 50px;
-  width: 100%;
+.container-recommend{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 5px;
-  text-wrap: nowrap;
-  text-overflow: ellipsis;
-}
+  min-width: 100%;
 
-.card-newmanhwa::before {
-  content: 'New';
-  top: 0;
-  left: 0;
-  display: block;
-  position: relative;
-  width: max-content;
-  text-decoration: none;
-  color: #F6F6F6;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20px;
-  padding: 5px;
-  background-color: #A41E34;
 }
-
-.newmanhwa-title {
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 0;
-  width: 100%;
-  white-space: nowrap;
-}
-
-.newmanhwa-rating {
-  font-size: 0.95rem;
-  font-weight: normal;
-  text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-  margin: 0;
-  white-space: nowrap;
-}
-
-.episode-texts {
-  background-color: rgb(0, 0, 0, 0.7);
-  max-width: max-content;
-  padding: 4px;
-  font-size: 13px;
-}
-
-.episode-text-container {
-  z-index: 1;
-  width: 100px;
-  position: relative;
-  top: -29px;
-  left: -8px;
-  color: #ffffff;
-  max-height: 1px;
-}
-
-.search-bar {
-  width: 100%;
-  padding: 10px 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: top 0.3s;
-  z-index: 1000;
-  border-radius: 10px;
-}
-
-.search-bar.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.input-group {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.input-group .form-control {
-  border-radius: 0;
-}
-
-.input-group .input-group-text {
-  border-radius: 0;
-  border-left: none;
-  cursor: pointer;
-}
-
-.input-group .form-control:focus,
-.input-group .input-group-text:focus {
-  box-shadow: none;
-  border: 1px solid #A41E34;
-}
-
-.input-group .form-control::placeholder {
-  color: #F6F6F6;
-  opacity: 0.7;
-}
-
-#search-addon {
-  background-color: transparent;
-  border: 0;
-}
-
-.popular-container {
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-color: transparent transparent;
-  scroll-snap-type: x mandatory;
-}
-
-.popular-container::-webkit-scrollbar {
-  display: none;
-}
-
-.popular-card-container {
-  display: flex;
-  gap: 5px;
-}
-
-.popular-manhwa-card {
-  min-width: 120px;
-  max-height: 200px;
-  background-color: red;
-  overflow: hidden;
-  border-radius: 10px;
-  margin: 5px;
-  scroll-snap-align: start;
-}
-
-.popular-image {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: hidden;
-}
-
-.popular-image-icon {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding: 5px;
-  background-color: #A41E34;
-  border-radius: 0 0 10px;
-  color: #ffffff;
-  font-size: 15px;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  height: 60px;
-}
-
-.popular-title {
-  font-size: 0.85rem;
-  font-weight: bold;
-  text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 0;
-  width: 100%;
-  white-space: nowrap;
-}
-
-.popular-chapter {
-  font-size: 0.75rem;
-  font-weight: normal;
-  text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-top: 3px;
-  width: 100%;
-  white-space: nowrap;
-}
-
 .container.container-recommend {
   display: flex;
   justify-content: start;
@@ -237,24 +26,14 @@
 
 .recommend-card-container {
   display: inline-block;
-  min-width: 100%;
-  height: 180px;
+  min-width: 30%;
+  height: 200px;
   position: relative;
   scroll-snap-align: center;
 }
 
 .recommend-card-background {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: blur(2px);
-  opacity: 0.6;
-  z-index: 0;
+  visibility: hidden;
 }
 
 .recommend-card-content {
@@ -266,21 +45,19 @@
 }
 
 .left-side {
-  flex: 1;
+  flex: 0.5;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .left-side img {
-  max-width: 100px;
-  min-width: 100px;
+  min-width: 80%;
   height: auto;
   border-radius: 10px;
 }
 
 .right-side {
-  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -288,23 +65,110 @@
 }
 
 .title {
-  font-size: 1.2em;
+  font-size: 1.5em;
   text-wrap: wrap;
   width: 200px;
   margin: 0;
 }
 
 .ratings {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .button-read {
-  background-color: #A41E34;
+  background-color: #a41e34;
   width: max-content;
   padding: 6px;
+  font-size: 1.4rem;
   border-radius: 10px;
 }
 
+
+.popular-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+
+.popular-card-container {
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: flex-start;
+  min-height: fit-content;  
+  gap: 5px;
+}
+
+.popular-manhwa-card {
+  max-width: 150px;
+  min-height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 5px;
+  scroll-snap-align: start;
+}
+
+.popular-image {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.popular-image-icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 5px;
+  border-radius: 0 0 10px;
+  font-size: 15px;
+  background-color: #a41e34;
+  color: #ffffff;
+
+}
+
+
+#card {
+  background-color: #222831;
+  text-decoration: none;
+  width: 30%;
+  height: 200px;
+  margin: 5px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.popular-title {
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.popular-chapter {
+  font-size: 0.95rem;
+  font-weight: normal;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+/* GENRE */
 .container-genre {
   width: 100%;
   background-color: transparent;
@@ -329,112 +193,422 @@
 }
 
 .genre-text {
-  font-size: 13px;
+  font-size: 20px;
   padding: 7px 14px;
   border-radius: 20px;
   background-color: #222831;
-  border: 1px solid #A41E34;
+  border: 1px solid #a41e34;
   white-space: nowrap;
 }
+@media screen and (max-width: 768px) {
+  .adsterra-ads {
+    margin: 0 auto;
+    text-align: center;
+    display: none;
+  }
 
-#card {
-  background-color: #222831;
-  text-decoration: none;
-  width: 30%;
-  height: 200px;
-  margin: 5px;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-}
+  #container-manhwalist {
+    background-color: #0b0c0e;
+  }
 
-#card .row {
-  width: 100%;
-  height: 150px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  .recommend-card-background {
+    content: '';
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    opacity: 0.6;
+    z-index: 0;
+  }
 
-.card-body {
-  height: 50px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 5px;
-  text-wrap: nowrap;
-  text-overflow: ellipsis;
-}
+  .card-img-top {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
 
-.title-complete {
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-top: 10px;
-  width: 100%;
-}
+  .newmanhwa-card-body {
+    background-color: #222831;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+  }
 
-/* Tablet styles */
-@media (min-width: 768px) {
+  .card-newmanhwa::before {
+    content: "New";
+    top: 0;
+    left: 0;
+    display: block;
+    position: relative;
+    width: max-content;
+    text-decoration: none;
+    color: #f6f6f6;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    padding: 5px;
+    background-color: #a41e34;
+  }
+
+  .newmanhwa-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .newmanhwa-rating {
+    font-size: 0.95rem;
+    font-weight: normal;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .episode-texts {
+    max-width: max-content;
+    padding: 4px;
+    font-size: 13px;
+  }
+
+  .episode-text-container {
+    z-index: 1;
+    width: 100px;
+    position: relative;
+    top: -29px;
+    left: -8px;
+    max-height: 1px;
+  }
+
   .search-bar {
-      max-width: 700px;
+    width: 100%;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s;
+    z-index: 1000;
+    border-radius: 10px;
+  }
+
+  .search-bar.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 
   .input-group {
-      max-width: 700px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .input-group .form-control {
+    border-radius: 0;
+  }
+
+  .input-group .input-group-text {
+    border-radius: 0;
+    border-left: none;
+    cursor: pointer;
+  }
+
+  #search-addon {
+    background-color: transparent;
+    border: 0;
+  }
+
+  .popular-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-color: transparent transparent;
+    scroll-snap-type: x mandatory;
+  }
+
+  .popular-container::-webkit-scrollbar {
+    display: none;
   }
 
   .popular-card-container {
-      gap: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    gap: 5px;
   }
 
   .popular-manhwa-card {
+    min-width: 120px;
+    min-height: 150px;
+    background-color: red;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 5px;
+    scroll-snap-align: start;
+  }
+
+  .popular-image {
+    position: relative;
+    width: 100%;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .popular-image-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 5px;
+    border-radius: 0 0 10px;
+    font-size: 15px;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    height: 60px;
+  }
+
+  .popular-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .popular-chapter {
+    font-size: 0.75rem;
+    font-weight: normal;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 3px;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .container.container-recommend {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: transparent transparent;
+  }
+
+  .container.container-recommend::-webkit-scrollbar {
+    display: none;
+  }
+
+  .recommend-card-container {
+    display: inline-block;
+    min-width: 100%;
+    height: 180px;
+    position: relative;
+    scroll-snap-align: center;
+  }
+
+  .recommend-card-background {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    opacity: 0.6;
+    z-index: 0;
+  }
+
+  .recommend-card-content {
+    display: flex;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .left-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left-side img {
+    max-width: 100px;
+    min-width: 100px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .right-side {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+
+  .title {
+    font-size: 1.2em;
+    text-wrap: wrap;
+    width: 200px;
+    margin: 0;
+  }
+
+  .ratings {
+    font-size: 1em;
+  }
+
+  .button-read {
+    background-color: #a41e34;
+    width: max-content;
+    padding: 6px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+
+
+  .genre-text {
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  #card {
+    background-color: #222831;
+    text-decoration: none;
+    width: 30%;
+    height: 200px;
+    margin: 5px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #card .row {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .card-body {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .title-complete {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  /* Tablet styles */
+  @media (min-width: 768px) {
+    .search-bar {
+      max-width: 700px;
+    }
+
+    .input-group {
+      max-width: 700px;
+    }
+
+    .popular-card-container {
+      gap: 10px;
+    }
+
+    .popular-manhwa-card {
       min-width: 150px;
       max-height: 250px;
-  }
+    }
 
-  .recommend-card-container {
+    .recommend-card-container {
       min-width: 80%;
       height: 220px;
-  }
+    }
 
-  .title {
+    .title {
       font-size: 1.4em;
       width: 300px;
+    }
   }
-}
 
-/* Desktop styles */
-@media (min-width: 992px) {
-  .search-bar {
+  /* Desktop styles */
+  @media (min-width: 992px) {
+    .search-bar {
       max-width: 900px;
-  }
+    }
 
-  .input-group {
+    .input-group {
       max-width: 900px;
-  }
+    }
 
-  .popular-card-container {
+    .popular-card-container {
       gap: 15px;
-  }
+    }
 
-  .popular-manhwa-card {
+    .popular-manhwa-card {
       min-width: 180px;
       max-height: 300px;
-  }
+    }
 
-  .recommend-card-container {
+    .recommend-card-container {
       min-width: 70%;
       height: 250px;
-  }
+    }
 
-  .title {
+    .title {
       font-size: 1.6em;
       width: 400px;
+    }
   }
 }

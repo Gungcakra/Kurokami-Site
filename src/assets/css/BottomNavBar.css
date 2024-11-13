@@ -1,54 +1,60 @@
-/* src/assets/css/BottomNavBar.css */
-
 .bottom-nav-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  z-index: 1000;
-  background-color: #222831;
+  visibility: hidden;
 }
+@media screen and (max-width: 768px) {
+  /* src/assets/css/BottomNavBar.css */
 
-.nav-links {
-  color: white; /* Default color for non-active links */
-  text-decoration: none;
-  text-align: center;
-  padding: 10px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative; /* Position relative for pseudo-elements */
-  transition: all 0.3s ease; /* Smooth color transition */
-}
+  .bottom-nav-bar {
+    visibility: visible;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    background-color: #222831;
+  }
 
-.nav-links.active {
-  color: #A41E34; /* Color for the active link */
-  margin-bottom: 12%;
-}
+  .nav-links {
+    color: white; /* Default color for non-active links */
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Position relative for pseudo-elements */
+    transition: all 0.3s ease; /* Smooth color transition */
+  }
 
-/* Background circle for active nav-link */
-.nav-links.active::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px; /* Size of the circle */
-  height: 60px; /* Size of the circle */
-  background-color: #222831; /* Circle color */
-  border-radius: 50%; /* Makes the element circular */
-  z-index: -1; /* Place it behind the text */
-}
+  .nav-links.active {
+    color: #a41e34; /* Color for the active link */
+    margin-bottom: 12%;
+  }
 
-/* Style for the nav-texts when the parent link is active */
-.nav-links.active .nav-texts {
-  color: #A41E34; /* Custom color for active state text */
-  font-weight: bold; /* Example additional style */
-}
+  /* Background circle for active nav-link */
+  .nav-links.active::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Size of the circle */
+    height: 60px; /* Size of the circle */
+    background-color: #222831; /* Circle color */
+    border-radius: 50%; /* Makes the element circular */
+    z-index: -1; /* Place it behind the text */
+  }
 
-.nav-texts {
-  font-size: 12px;
-  color: inherit; /* Inherit color from parent link */
+  /* Style for the nav-texts when the parent link is active */
+  .nav-links.active .nav-texts {
+    color: #a41e34; /* Custom color for active state text */
+    font-weight: bold; /* Example additional style */
+  }
+
+  .nav-texts {
+    font-size: 12px;
+    color: inherit; /* Inherit color from parent link */
+  }
 }

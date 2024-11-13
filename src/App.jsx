@@ -23,7 +23,7 @@ const App = () => {
 
   return (
  
-    <div id='app' style={{ paddingBottom: shouldShowBottomNavBar ? '60px' :  '0px'}}>
+    <div id='app' style={{ paddingBottom: shouldShowBottomNavBar ? '60px' :  '0px', backgroundColor:'#0b0c0e'}}>
       <Routes>
         <Route path="/" element={<ManhwaList />} />
         <Route path="/jadwal" element={<Jadwal />} />
