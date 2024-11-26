@@ -58,7 +58,7 @@ const ManhwaList = () => {
     const fetchRecommend = async () => {
       try {
         const response = await fetch(
-          "https://kurokami.vercel.app/api/manhwa-recommend"
+          "https://kurokami.vercel.app/api/manhwa-top"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
