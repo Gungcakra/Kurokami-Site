@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/ManhwaList.css";
 import { Spinner } from "react-bootstrap";
@@ -8,12 +8,10 @@ import {
   faStar,
   faSearch,
   faFire,
-  faArrowLeft,
-  faArrowRight,
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
-import AdsterraAds from "./AdsterraAds";
-import NativeAds from "./NavideAds";
+// import AdsterraAds from "./AdsterraAds";
+// import NativeAds from "./NavideAds";
 import { setManhwaId } from "../store";
 import { useDispatch } from "react-redux";
 const ManhwaList = () => {
@@ -27,7 +25,7 @@ const ManhwaList = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const containerRef = useRef(null);
+  // const containerRef = useRef(null);
   const [mostRecentChapter, setMostRecentChapter] = useState(null);
   const dispatch = useDispatch();
   // POPULAR
@@ -58,7 +56,7 @@ const ManhwaList = () => {
     const fetchRecommend = async () => {
       try {
         const response = await fetch(
-          "https://kurokami.vercel.app/api/manhwa-top"
+          "https://kurokami.vercel.app/api/manhwa-recommend"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -111,9 +109,9 @@ const ManhwaList = () => {
         }
         const result = await response.json();
         // Filter out entries with no chapters
-        const filteredResult = result.filter(
-          (manhwa) => manhwa.chapters && manhwa.chapters.length > 0
-        );
+        // const filteredResult = result.filter(
+        //   (manhwa) => manhwa.chapters && manhwa.chapters.length > 0
+        // );
         setNewManhwa(result);
         // console.log(filteredResult);
       } catch (error) {
