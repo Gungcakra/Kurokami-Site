@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import AppWrapper from './App.jsx'
 import store from './store.js'

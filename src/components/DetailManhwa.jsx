@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { useDispatch } from "react-redux";
 import "../assets/css/AnimeDetail.css"; // Ensure this path is correct
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faList, faBookmark, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import DetailSkeleton from "./DetailSkeleton";
+// import DetailSkeleton from "./DetailSkeleton";
 import { App } from "@capacitor/app";
 import { Spinner } from "react-bootstrap";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setManhwaId } from "../store";
-import { motion } from "framer-motion";
-import AdsterraAds from "./AdsterraAds";
+// import { motion } from "framer-motion";
+// import AdsterraAds from "./AdsterraAds";
 
 const removeWordFromTitle = (title) => {
   return title.replace(/nonton anime/gi, "").trim();
@@ -26,7 +26,7 @@ const DetailManhwa = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const idManhwa = id; // Ensure idManhwa is correct
-  const [readChapters, setReadChapters] = useState();
+  // const [readChapters, setReadChapters] = useState();
   // Scale state
   const [scale, setScale] = useState(1.1);
   const [opacity, setOpacity] = useState(0)
@@ -60,16 +60,16 @@ const DetailManhwa = () => {
   }, [id]);
   
 
-  const getSavedChaptersByManhwaTitle = (manhwaTitle) => {
-    const savedChapters = JSON.parse(localStorage.getItem('savedChapters')) || [];
-    const filteredChapters = savedChapters.filter(chapter => chapter.manhwaTitle === manhwaTitle);
-    return filteredChapters;
-  };
+  // const getSavedChaptersByManhwaTitle = (manhwaTitle) => {
+  //   const savedChapters = JSON.parse(localStorage.getItem('savedChapters')) || [];
+  //   const filteredChapters = savedChapters.filter(chapter => chapter.manhwaTitle === manhwaTitle);
+  //   return filteredChapters;
+  // };
   
-  const extractChapterNumber = (chapterNum) => {
-    const match = chapterNum.match(/Chapter\s(\d+)/i);
-    return match ? `Chapter ${match[1]}` : null;
-  };
+  // const extractChapterNumber = (chapterNum) => {
+  //   const match = chapterNum.match(/Chapter\s(\d+)/i);
+  //   return match ? `Chapter ${match[1]}` : null;
+  // };
 
   // const isChapterRead = (chapterNum) => {
   //   const extractedChapterNum = extractChapterNumber(chapterNum);
@@ -216,27 +216,27 @@ const DetailManhwa = () => {
   // };
   
   
-  const formatTime = (time) => {
-    const now = new Date();
-    const chapterDate = new Date(time);
-    const diff = now - chapterDate;
-    const seconds = Math.floor(diff / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
+  // const formatTime = (time) => {
+  //   const now = new Date();
+  //   const chapterDate = new Date(time);
+  //   const diff = now - chapterDate;
+  //   const seconds = Math.floor(diff / 1000);
+  //   const minutes = Math.floor(seconds / 60);
+  //   const hours = Math.floor(minutes / 60);
+  //   const days = Math.floor(hours / 24);
 
-    if (seconds < 60) {
-      return `${seconds} detik lalu`;
-    } else if (minutes < 60) {
-      return `${minutes} menit lalu`;
-    } else if (hours < 24) {
-      return `${hours} jam lalu`;
-    } else if (days < 30) {
-      return `${days} hari lalu`;
-    } else {
-      return chapterDate.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
-    }
-  };
+  //   if (seconds < 60) {
+  //     return `${seconds} detik lalu`;
+  //   } else if (minutes < 60) {
+  //     return `${minutes} menit lalu`;
+  //   } else if (hours < 24) {
+  //     return `${hours} jam lalu`;
+  //   } else if (days < 30) {
+  //     return `${days} hari lalu`;
+  //   } else {
+  //     return chapterDate.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+  //   }
+  // };
   
   
 

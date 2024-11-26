@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import '../assets/css/SearchResult.css';
@@ -6,7 +6,7 @@ import { App } from '@capacitor/app';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Spinner } from 'react-bootstrap';
-import AdsterraAds from './AdsterraAds';
+// import AdsterraAds from './AdsterraAds';
 
 const truncateTitle = (title, maxWords) => {
   const words = title.split(' ');
@@ -28,7 +28,7 @@ const SearchResults = () => {
     const fetchsearchResults = async () => {
       setLoadingsearch(true);
       try {
-        const { data } = await axios.get(`https://kurokami.vercel.app/api/page/${currentPage}/search/${encodeURIComponent(query)}`);
+        const { data } = await axios.get(`https://kurokami.vercel.app/api/search/${encodeURIComponent(query)}/page/${currentPage}`);
         setsearchResults(data);
       } catch (error) {
         console.error('Error fetching search data:', error);
@@ -94,8 +94,8 @@ const SearchResults = () => {
     }
   };
 
-  const maxButtons = 3;
-  const paginatedButtons = searchResults.pagination.slice(0, maxButtons);
+  // const maxButtons = 3;
+  // const paginatedButtons = searchResults.pagination.slice(0, maxButtons);
   return (
     <div id="bg-search-result">
       <div className="navigation-back">
@@ -108,9 +108,9 @@ const SearchResults = () => {
         </button>
       </div>
 
-      <p className="text-start text-white fs-3 mt-5 pt-4 m-2">
+      {/* <p className="text-start text-white fs-3 mt-5 pt-4 m-2">
         <b>Search</b> Results for "{query}"
-      </p>
+      </p> */}
 
       <div id="container-search-result" className="d-flex justify-content-center">
         {loadingsearch ? (

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 import BottomNavBar from './components/BottomNavBar'; // Import the BottomNavBar
@@ -13,7 +12,6 @@ import ManhwaList from './components/ManhwaList';
 import DetailManhwa from './components/DetailManhwa';
 import ReadChapter from './components/ReadChapter';
 import Bookmarks from './components/BookMarks';
-import { motion } from 'framer-motion';
 import Info from './components/Info';
 import History from './components/HIstory';
 const App = () => {
@@ -23,7 +21,7 @@ const App = () => {
 
   return (
  
-    <div id='app' style={{ paddingBottom: shouldShowBottomNavBar ? '60px' :  '0px', backgroundColor:'#0b0c0e'}}>
+    <div id='app' style={{ paddingBottom: shouldShowBottomNavBar ? '60px' :  '0px'}}>
       <Routes>
         <Route path="/" element={<ManhwaList />} />
         <Route path="/jadwal" element={<Jadwal />} />
